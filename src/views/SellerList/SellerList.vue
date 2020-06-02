@@ -169,7 +169,25 @@
                     <td>{{ item.created_at }}</td>
                     <td>
                       <!-- "seller_actions"의 키를 들고와서 비교에 따라 표현 -->
-                      <button v-for="action in item.seller_actions" :key="action">{{ action }}</button>
+                      <!-- <button v-for="action in item.seller_actions" :key="action">{{action}}</button> -->
+                      <div class="statusBtnBox" v-for="action in item.seller_actions" :key="action">
+                        <button
+                          style="background-color: #5bc0de; border-color: #46b8da;"
+                          v-if="action === '입점 승인'"
+                        >{{action}}</button>
+                        <button
+                          style="background-color: #d9534f;border-color: #d43f3a;"
+                          v-if="action === '입점 거절' || action === '퇴점 신청 처리' || action === '퇴점 확정 처리'"
+                        >{{action}}</button>
+                        <button
+                          style="background-color: #f0ad4e; border-color: #eea236;"
+                          v-if="action === '휴점 신청'"
+                        >{{action}}</button>
+                        <button
+                          style="background-color: #5cb85c; border-color: #4cae4c;"
+                          v-if="action === '퇴점 철회 처리' || action === '휴점 해제'"
+                        >{{action}}</button>
+                      </div>
                     </td>
                   </tr>
                 </tbody>
@@ -177,6 +195,7 @@
             </template>
           </v-simple-table>
         </template>
+        <my></my>
         <div class="pageContainer">
           <span>Page</span>
           <button>
@@ -346,6 +365,10 @@ export default {
       font-size: 18px;
       margin: 0 15px;
     }
+    .statusBtnBox {
+      display: inline;
+      font-size: 12px;
+    }
     .tableOut {
       min-width: 100%;
       .tableIn {
@@ -357,8 +380,8 @@ export default {
         button {
           padding: 5px;
           color: #fff;
-          background-color: #5cb85c;
-          border-color: #4cae4c;
+          // background-color: #5cb85c;
+          // border-color: #4cae4c;
           border-radius: 3px;
           margin-left: 5px;
         }
