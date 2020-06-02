@@ -71,8 +71,7 @@ export default {
   display: flex;
   .about {
     width: calc(100vw - 256px);
-    height: 100vh;
-    color: black;
+        color: black;
     background: white;
     .container {
       width: 100%;
