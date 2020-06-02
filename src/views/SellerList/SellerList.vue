@@ -168,8 +168,7 @@
                     <td>{{ item.detail_url }}</td>
                     <td>{{ item.created_at }}</td>
                     <td>
-                      <!-- "seller_actions"의 키를 들고와서 비교에 따라 표현 -->
-                      <!-- <button v-for="action in item.seller_actions" :key="action">{{action}}</button> -->
+                      <!-- 클릭하면 상태를 post 하고, Post 처리가 된 뒤의 action 버튼들을 get 해야한다. -->
                       <div class="statusBtnBox" v-for="action in item.seller_actions" :key="action">
                         <button
                           style="background-color: #5bc0de; border-color: #46b8da;"
@@ -195,7 +194,6 @@
             </template>
           </v-simple-table>
         </template>
-        <my></my>
         <div class="pageContainer">
           <span>Page</span>
           <button>
@@ -268,6 +266,7 @@ export default {
 <style lang="scss" scoped>
 .tableContainer {
   padding-top: 35px;
+
   .slTitleBox {
     padding: 0 20px;
     display: flex;
@@ -324,7 +323,6 @@ export default {
     border: 1px solid #d3d3d3;
     background-color: white;
     margin: 0 15px;
-    width: calc(100% - 300px);
     border-radius: 5px;
 
     input,
