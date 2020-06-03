@@ -178,7 +178,7 @@ export default {
     },
     //확인 후, 백엔드로 전송할 password value값과 state값을 수정한다.
     pwCheck: function() {
-      /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,20}$/.test(
+      /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{7,20}$/.test(
         this.password.value
       )
         ? ((this.password.state = true), console.log(password.state))
@@ -234,7 +234,15 @@ export default {
           end_date: this.end_date
         })
         .then(response => {
-          alert("성공");
+          if (response) {
+            console.log("회원가입 성공");
+          } else {
+            alert("회원내용 불일치");
+          }
+        })
+        .catch(err => {
+          alert("가입 실패");
+          console.error(err);
         });
     },
     radios: function() {}
