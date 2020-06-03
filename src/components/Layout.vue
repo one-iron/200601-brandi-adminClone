@@ -68,7 +68,7 @@ export default {
   display: flex;
   .about {
     width: calc(100vw - 256px);
-    color: black;
+        color: black;
     background: white;
     .container {
       width: unset !important;
