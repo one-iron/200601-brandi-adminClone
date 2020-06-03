@@ -9,9 +9,9 @@
               <i class="xi-home-o" style="color: black;" />
             </div>
             <li class="li-tag">상품관리 > </li>
-            
+
             <li class="li-tag">상품 관리 ></li>
-            
+
             <li class="li-tag">상품 등록</li>
           </ul>
         </div>
@@ -57,7 +57,7 @@
                           상품을 등록할 셀러를 선택해주세요. (검색 10건)
                       </v-card-text>
               <form style="display:flex; justify-content:center; background-color: white;">
-                      
+
             <v-card-text style="background-color:white; width:150px; margin:auto">
               <span> 셀러 검색 </span>
                  </v-card-text>
@@ -88,11 +88,11 @@
                       >
                     </v-card-actions>
                   </v-dialog>
-                </v-row>                   
+                </v-row>
               </v-app>
             </td>
           </tr>
-                  
+
                   <tr>
                      <td class="align-middle">
                         판매여부
@@ -177,47 +177,46 @@
                       <label class="radio-inline">
                          <div class="radio">
                             <button>  <input type="radio" name="information" value="Y" checked="checked" v-on:click="isHidden = true">
-                        상품 상세 참조 </input> </button>
-                           </div>
+                             상품 상세 참조 </input> </button>
+                          </div>
                        </label>
 
                       <label class="radio-inline">
-                             <button > <input type="radio" name="information" value="N" v-on:click="isHidden = !isHidden">
-                            직접 입력 </input></button>
-                       </label>
-                            </div>
-                           <div class="input-directly" v-if="!isHidden">
-                              <div >제조사(수입사) : <input type="text"  class="company-name"/>   </div>
-                              <br>
-                              <div style="display :flex;">
+                        <button> <input type="radio" name="information" value="N" v-on:click="isHidden = !isHidden">
+                          직접 입력 </input> </button>
+                      </label>
+                         </div>
+                          <div class="input-directly" v-if="!isHidden">
+                            <div >제조사(수입사) : <input type="text"  class="company-name"/>   </div>
+                             <br>
+                             <div style="display :flex;">
                               <span> 제조일자 : </span> <span>
-                                  <b-form-datepicker style="width:250px" id="example-datepicker" v-model="value" class="mb-2"></b-form-datepicker>
-                              </span> 
-                              </div>
-                              <br>
-                               <span> 원산지 : </span>
-                               <span> <b-form-select style="width=200px;" v-model="selected" :options="options" size="sm" class="mt-3"></b-form-select></span>
-                              </div>
+                                <b-form-datepicker style="width:250px" id="example-datepicker" v-model="value" class="mb-2"></b-form-datepicker>
+                              </span>
+                            </div>
+                                <br>
+                              <span> 원산지 : </span>
+                              <span> <b-form-select style="width=200px;" v-model="selected" :options="options" size="sm" class="mt-3"></b-form-select></span>
+                          </div>
                         </td>
                     </tr>
 
                     <tr>
                       <td class="align-middle">
-                              상품명 <span class="font-color-red">*</span>
-                         </td>
+                          상품명 <span class="font-color-red">*</span>
+                      </td>
                       <td class="align-middle">
                         <input type="text" name="product_name" class="form-control" value="" maxlength="200">
                            <span class="font-color-blue">
-                              <p style="margin-top: 10px;">  <i class="xi-caret-up"></i>  상품명에는 쌍따옴표(") 또는 홑따옴표(')를 포함할 수 없습니다.</p>
-                              <p> <i class="xi-caret-up"></i>  상품명에는 4byte 이모지를 포함할 수 없습니다.</p>
-                           </span>
-                    </td>
-                  </tr>
-
-                   <tr>
+                             <p style="margin-top: 10px;">  <i class="xi-caret-up"></i>  상품명에는 쌍따옴표(") 또는 홑따옴표(')를 포함할 수 없습니다.</p>
+                             <p> <i class="xi-caret-up"></i>  상품명에는 4byte 이모지를 포함할 수 없습니다.</p>
+                          </span>
+                        </td>
+                      </tr>
+                     <tr>
                         <td class="align-middle">
                               한줄 상품 설명 <span class="font-color-red">*</span>
-                         </td>
+                        </td>
                       <td class="align-middle">
                         <input type="text" class ="one-line" />
                     </td>
@@ -231,8 +230,10 @@
                           <img v-if="url" :src="url" />
                        </div>
                         <input type="file" @change="onFileChange"  accept="image/*" multiple/>
+                        <div class="font-color-blue">
+                            <i class="xi-caret-up"></i> 640 * 720 사이즈 이상 등록 가능하며 확장자는 jpg 만 등록 가능합니다.  </div>
 
-                         <!-- <input type="file" id="image" accept="image/*" onchange="setThumbnail(event);" multiple/> 
+                         <!-- <input type="file" id="image" accept="image/*" onchange="setThumbnail(event);" multiple/>
                          <div id="image_container"></div> -->
                     </td>
                   </tr>
@@ -246,13 +247,13 @@
                             <label class="radio-inline">
                            <div class="radio"><span class="checked"><input type="radio" name="colorCode"  class="ui-control"  ></span></div> 사용안함
                                </label>
-                             <label class="radio-inline">
+                           <label class="radio-inline">
                                   <div class="radio"><span><input type="radio" name="colorCode"  class="ui-control"  ></span></div> 사용함
                      </label>
                      <div class="picker-box">
-                       <input type="text" class="form-control" >
+                       <input type="text" class="color-filter" >
                              <span class="color-box"></span>
-                              </div>
+                     </div>
                   <v-row justify="center">
                        <v-dialog v-model="colordialog" scrollable max-width="450px">
                  <template v-slot:activator="{ on }">
@@ -279,19 +280,19 @@
              <img style="width:35px; height:35px; border-radius:20px;" src="https://dthumb-phinf.pstatic.net/?src=%22https%3A%2F%2Fdbscthumb-phinf.pstatic.net%2F2512_000_1%2F20130825213141805_R5CXRESO9.jpg%2Fi-c-68.jpg%3Ftype%3Dm4500_4500_fst_n%26wm%3DY%22&twidth=354&theight=80&opts=17">
               <br>
                <span>노랑</span><br>
-               <span>(Yellow)</span>    
+               <span>(Yellow)</span>
            </td>
            <td>
              <img style="width:35px; height:35px; border-radius:20px;" src="https://dthumb-phinf.pstatic.net/?src=%22https%3A%2F%2Fdbscthumb-phinf.pstatic.net%2F2512_000_1%2F20190711160628123_BB7XII6S4.jpg%2Fi-c-55.jpg%3Ftype%3Dm4500_4500_fst_n%26wm%3DY%22&twidth=500&theight=62&opts=17">
               <br>
                <span>베이지</span><br>
-               <span>(Beige)</span>    
+               <span>(Beige)</span>
            </td>
            <td>
              <img style="width:35px; height:35px; border-radius:20px;" src="https://dthumb-phinf.pstatic.net/?src=%22https%3A%2F%2Fdbscthumb-phinf.pstatic.net%2F2512_000_1%2F20130825213102693_IKNCISY3I.jpg%2Fi-c-38.jpg%3Ftype%3Dm4500_4500_fst_n%26wm%3DY%22&twidth=352&theight=83&opts=17">
               <br>
                <span>갈색</span><br>
-               <span>(Brown)</span>    
+               <span>(Brown)</span>
            </td>
          </tr>
 
@@ -301,48 +302,14 @@
              <img style="width:35px; height:35px; border-radius:20px;" src="https://dbscthumb-phinf.pstatic.net/2512_000_1/20130825213031822_DAT75UGRE.jpg/i-c-18.jpg?type=m4500_4500_fst_n&wm=Y">
               <br>
                <span>빨강</span><br>
-               <span>(Red)</span>    
+               <span>(Red)</span>
            </td>
            </button>
            <td>
              <img style="width:35px; height:35px; border-radius:20px;" src="https://dthumb-phinf.pstatic.net/?src=%22https%3A%2F%2Fdbscthumb-phinf.pstatic.net%2F2512_000_1%2F20130825213048883_MOHWHB1G3.jpg%2Fi-c-30.jpg%3Ftype%3Dm4500_4500_fst_n%26wm%3DY%22&twidth=352&theight=80&opts=17">
               <br>
                <span>주황</span><br>
-               <span>(Orange)</span>    
-           </td>
-           <td>
-             <img style="width:35px; height:35px; border-radius:20px;" src="https://dthumb-phinf.pstatic.net/?src=%22https%3A%2F%2Fdbscthumb-phinf.pstatic.net%2F2512_000_1%2F20130825213141805_R5CXRESO9.jpg%2Fi-c-68.jpg%3Ftype%3Dm4500_4500_fst_n%26wm%3DY%22&twidth=354&theight=80&opts=17">
-              <br>
-               <span>노랑</span><br>
-               <span>(Yellow)</span>    
-           </td>
-           <td>
-             <img style="width:35px; height:35px; border-radius:20px;" src="https://dthumb-phinf.pstatic.net/?src=%22https%3A%2F%2Fdbscthumb-phinf.pstatic.net%2F2512_000_1%2F20190711160628123_BB7XII6S4.jpg%2Fi-c-55.jpg%3Ftype%3Dm4500_4500_fst_n%26wm%3DY%22&twidth=500&theight=62&opts=17">
-              <br>
-               <span>베이지</span><br>
-               <span>(Beige)</span>    
-           </td>
-           <td>
-             <img style="width:35px; height:35px; border-radius:20px;" src="https://dthumb-phinf.pstatic.net/?src=%22https%3A%2F%2Fdbscthumb-phinf.pstatic.net%2F2512_000_1%2F20130825213102693_IKNCISY3I.jpg%2Fi-c-38.jpg%3Ftype%3Dm4500_4500_fst_n%26wm%3DY%22&twidth=352&theight=83&opts=17">
-              <br>
-               <span>갈색</span><br>
-               <span>(Brown)</span>    
-           </td>
-         </tr>
-             <tr>
-              <button>
-           <td>
-             <img style="width:35px; height:35px; border-radius:20px;" src="https://dbscthumb-phinf.pstatic.net/2512_000_1/20130825213031822_DAT75UGRE.jpg/i-c-18.jpg?type=m4500_4500_fst_n&wm=Y">
-              <br>
-               <span>빨강</span><br>
-               <span>(Red)</span>    
-           </td>
-           </button>
-           <td>
-             <img style="width:35px; height:35px; border-radius:20px;" src="https://dthumb-phinf.pstatic.net/?src=%22https%3A%2F%2Fdbscthumb-phinf.pstatic.net%2F2512_000_1%2F20130825213048883_MOHWHB1G3.jpg%2Fi-c-30.jpg%3Ftype%3Dm4500_4500_fst_n%26wm%3DY%22&twidth=352&theight=80&opts=17">
-              <br>
-               <span>주황</span><br>
-               <span>(Orange)</span>    
+               <span>(Orange)</span>
            </td>
            <td>
              <img style="width:35px; height:35px; border-radius:20px;" src="https://dthumb-phinf.pstatic.net/?src=%22https%3A%2F%2Fdbscthumb-phinf.pstatic.net%2F2512_000_1%2F20130825213141805_R5CXRESO9.jpg%2Fi-c-68.jpg%3Ftype%3Dm4500_4500_fst_n%26wm%3DY%22&twidth=354&theight=80&opts=17">
@@ -360,7 +327,41 @@
              <img style="width:35px; height:35px; border-radius:20px;" src="https://dthumb-phinf.pstatic.net/?src=%22https%3A%2F%2Fdbscthumb-phinf.pstatic.net%2F2512_000_1%2F20130825213102693_IKNCISY3I.jpg%2Fi-c-38.jpg%3Ftype%3Dm4500_4500_fst_n%26wm%3DY%22&twidth=352&theight=83&opts=17">
               <br>
                <span>갈색</span><br>
-               <span>(Brown)</span>    
+               <span>(Brown)</span>
+           </td>
+         </tr>
+             <tr>
+              <button>
+           <td>
+             <img style="width:35px; height:35px; border-radius:20px;" src="https://dbscthumb-phinf.pstatic.net/2512_000_1/20130825213031822_DAT75UGRE.jpg/i-c-18.jpg?type=m4500_4500_fst_n&wm=Y">
+              <br>
+               <span>빨강</span><br>
+               <span>(Red)</span>
+           </td>
+           </button>
+           <td>
+             <img style="width:35px; height:35px; border-radius:20px;" src="https://dthumb-phinf.pstatic.net/?src=%22https%3A%2F%2Fdbscthumb-phinf.pstatic.net%2F2512_000_1%2F20130825213048883_MOHWHB1G3.jpg%2Fi-c-30.jpg%3Ftype%3Dm4500_4500_fst_n%26wm%3DY%22&twidth=352&theight=80&opts=17">
+              <br>
+               <span>주황</span><br>
+               <span>(Orange)</span>
+           </td>
+           <td>
+             <img style="width:35px; height:35px; border-radius:20px;" src="https://dthumb-phinf.pstatic.net/?src=%22https%3A%2F%2Fdbscthumb-phinf.pstatic.net%2F2512_000_1%2F20130825213141805_R5CXRESO9.jpg%2Fi-c-68.jpg%3Ftype%3Dm4500_4500_fst_n%26wm%3DY%22&twidth=354&theight=80&opts=17">
+              <br>
+               <span>노랑</span><br>
+               <span>(Yellow)</span>
+           </td>
+           <td>
+             <img style="width:35px; height:35px; border-radius:20px;" src="https://dthumb-phinf.pstatic.net/?src=%22https%3A%2F%2Fdbscthumb-phinf.pstatic.net%2F2512_000_1%2F20190711160628123_BB7XII6S4.jpg%2Fi-c-55.jpg%3Ftype%3Dm4500_4500_fst_n%26wm%3DY%22&twidth=500&theight=62&opts=17">
+              <br>
+               <span>베이지</span><br>
+               <span>(Beige)</span>
+           </td>
+           <td>
+             <img style="width:35px; height:35px; border-radius:20px;" src="https://dthumb-phinf.pstatic.net/?src=%22https%3A%2F%2Fdbscthumb-phinf.pstatic.net%2F2512_000_1%2F20130825213102693_IKNCISY3I.jpg%2Fi-c-38.jpg%3Ftype%3Dm4500_4500_fst_n%26wm%3DY%22&twidth=352&theight=83&opts=17">
+              <br>
+               <span>갈색</span><br>
+               <span>(Brown)</span>
            </td>
          </tr>
              <tr>
@@ -403,6 +404,18 @@
                          </div>
                    </td>
                   </tr>
+
+                   <tr>
+                        <td class="align-middle">
+                            스타일필터 <span class="font-color-red">*</span>
+                         </td>
+                         <label class="radio-inline">
+                           <div class="radio"><span class="checked"><input type="radio" name="colorCode"  class="ui-control"  ></span></div> 사용안함
+                               </label>
+                           <label class="radio-inline">
+                                  <div class="radio"><span><input type="radio" name="colorCode"  class="ui-control"  ></span></div> 사용함
+                     </label>
+                   </tr>
                 </tbody>
               </table>
             </div>
@@ -512,7 +525,7 @@ export default {
     -webkit-box-shadow1: 0 1px 4px rgba(0, 0, 0, 0.07);
     border: 1px solid #ddd;
     border-radius: 4px;
-    
+
     .portlet-title {
       background-color: #eee;
       border-radius: 4px 4px 0 0;
@@ -563,7 +576,7 @@ export default {
         }
 
         .font-color-blue{
-        
+
           font-size: 13px;
           color: #1e90ff !important;
         }
@@ -596,7 +609,7 @@ export default {
           border:1px solid #888;
         }
         .origin{
-         
+
           width:400px;
         }
         .form-selectd{
@@ -608,6 +621,10 @@ export default {
         .form-control{
              width: 100%;
             border: 1px solid #888;
+        }
+        .color-filter{
+          border: 1px solid #888;
+          width: 200px;
         }
         .one-line{
              width: 100%;
@@ -628,7 +645,7 @@ export default {
         .picker-box{
           margin-right: 30px;
         }
-    
+
   }
     .li-tag{
           margin-top: 15px;
