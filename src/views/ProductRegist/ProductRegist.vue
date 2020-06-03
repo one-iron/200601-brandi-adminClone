@@ -180,8 +180,8 @@
                        </label>
 
                       <label class="radio-inline">
-                        <button> <input type="radio" name="information" value="N" v-on:click="isHidden = !isHidden">
-                          직접 입력 </input> </button>
+                        <button> <input type="radio" name="information" value="N" v-on:click="isHidden = !isHidden"/>
+                          직접 입력  </button>
                       </label>
                          </div>
                           <div class="input-directly" v-if="!isHidden">
