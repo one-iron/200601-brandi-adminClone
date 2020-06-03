@@ -68,6 +68,7 @@ export default {
   display: flex;
   .about {
     width: calc(100vw - 256px);
+    // height: calc(100vh - 90px) !important;
     color: black;
     background: white;
     .container {
