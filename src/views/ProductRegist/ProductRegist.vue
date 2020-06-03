@@ -9,9 +9,7 @@
               <i class="xi-home-o" style="color: black;" />
             </div>
             <li class="li-tag">상품관리 > </li>
-
             <li class="li-tag">상품 관리 ></li>
-
             <li class="li-tag">상품 등록</li>
           </ul>
         </div>
@@ -25,13 +23,13 @@
 
           <div class="row" style="border:1px solid #888; background-color: #f9f9f9;">
             <div class="col-md-12">
-              <table class="table-in-portlet" style="border:1px solid gray">
+              <table class="table-in-portlet" style="border: 1px solid #ddd;">
                 <tbody>
-                 <tr>
-                   <td class="align-middle">
+                 <tr style="border: 1px solid #ddd;"> 
+                   <td class="seller-choice" style="border: 1px solid #ddd;" width=15%>
                        셀러선택 <span class="font-color-red">*</span>
                    </td>
-                     <td style="width:300px; display : flex;">
+                     <td style="width:300px; display: flex;">
                        <b-form-input
                         style="margim:20px 30px; width:250px; border:none"
                         v-model="text"
@@ -86,15 +84,15 @@
                       <b-button variant="primary" text @click="dialog = false"
                         >셀러 선택하기</b-button
                       >
-                    </v-card-actions>
-                  </v-dialog>
-                </v-row>
-              </v-app>
-            </td>
-          </tr>
+                      </v-card-actions>
+                   </v-dialog>
+                 </v-row>
+                </v-app>
+             </td>
+            </tr>
 
-                  <tr>
-                     <td class="align-middle">
+                  <tr style="border: 1px solid #ddd;">
+                     <td class="sold-status" style="border: 1px solid #ddd;">
                         판매여부
                     </td>
                        <td style="width:400px">
@@ -114,8 +112,8 @@
                         </td>
                     </tr>
 
-                     <tr>
-                     <td class="align-middle">
+                     <tr style="border: 1px solid #ddd;">
+                     <td class="display-status" style="border: 1px solid #ddd;">
                         진열여부
                     </td>
                       <td style="width:400px">
@@ -135,8 +133,8 @@
                         </td>
                     </tr>
 
-                    <tr style="background-color: #f9f9f9;">
-                       <td style="width=5%">
+                    <tr style="background-color:#f9f9f9; border:1px solid #ddd;">
+                       <td style="border:1px solid #ddd">
                          카테고리 <span class="font-color-red">*</span>
                       </td>
                          <td>
@@ -169,7 +167,7 @@
                         </td>
                      </tr>
                   <tr>
-                     <td class="align-middle" width="25%">
+                     <td class="product-info-explain" style="border: 1px solid #ddd;">
                         상품 정보 고시
                     </td>
                       <td class="product_info">
@@ -202,10 +200,10 @@
                     </tr>
 
                     <tr>
-                      <td class="align-middle">
+                      <td class="product-name" style="border: 1px solid #ddd;">
                           상품명 <span class="font-color-red">*</span>
                       </td>
-                      <td class="align-middle">
+                      <td class="product-name">
                         <input type="text" name="product_name" class="form-control" value="" maxlength="200">
                            <span class="font-color-blue">
                              <p style="margin-top: 10px;">  <i class="xi-caret-up"></i>  상품명에는 쌍따옴표(") 또는 홑따옴표(')를 포함할 수 없습니다.</p>
@@ -214,18 +212,18 @@
                         </td>
                       </tr>
                      <tr>
-                        <td class="align-middle">
+                        <td class="oneline-explain" style="border: 1px solid #ddd;">
                               한줄 상품 설명 <span class="font-color-red">*</span>
                         </td>
-                      <td class="align-middle">
+                      <td class="oneline-explain">
                         <input type="text" class ="one-line" />
                     </td>
                   </tr>
                     <tr>
-                        <td class="align-middle">
+                        <td class="image-upload">
                               이미지 등록 <span class="font-color-red">*</span>
                          </td>
-                      <td class="align-middle">
+                      <td class="image-upload" style="border: 1px solid #ddd;">
                          <div id="preview">
                           <img v-if="url" :src="url" />
                        </div>
@@ -238,7 +236,7 @@
                     </td>
                   </tr>
                     <tr>
-                        <td class="align-middle">
+                        <td class="color-filter">
                               색상필터(썸네일 이미지) <span class="font-color-red">*</span>
                          </td>
                     <td style="background-color: #f9f9f9;">
@@ -257,26 +255,26 @@
                   <v-row justify="center">
                        <v-dialog v-model="colordialog" scrollable max-width="450px">
                  <template v-slot:activator="{ on }">
-             <v-btn color="primary" dark v-on="on"> 적용 할 색상 찾기</v-btn>
-       </template>
-        <v-card>
-          <v-card-title>색상 선택</v-card-title>
-             <v-divider></v-divider>
-                <v-card-text style="width:100%; height: 300px;">
-         <tr>
-           <td>
-             <img style="width:35px; height:35px; border-radius:20px;" src="https://dbscthumb-phinf.pstatic.net/2512_000_1/20130825213031822_DAT75UGRE.jpg/i-c-18.jpg?type=m4500_4500_fst_n&wm=Y">
-              <br>
-               <span>빨강</span><br>
-               <span>(Red)</span>
-           </td>
+               <v-btn color="primary" dark v-on="on"> 적용 할 색상 찾기</v-btn>
+             </template>
+           <v-card>
+              <v-card-title>색상 선택</v-card-title>
+                 <v-divider></v-divider>
+                   <v-card-text style="width:100%; height: 300px;">
+            <tr>
+               <td>
+                 <img style="width:35px; height:35px; border-radius:20px;" src="https://dbscthumb-phinf.pstatic.net/2512_000_1/20130825213031822_DAT75UGRE.jpg/i-c-18.jpg?type=m4500_4500_fst_n&wm=Y">
+               <br>
+                 <span>빨강</span><br>
+                 <span>(Red)</span>
+             </td>
            <td>
              <img style="width:35px; height:35px; border-radius:20px;" src="https://dthumb-phinf.pstatic.net/?src=%22https%3A%2F%2Fdbscthumb-phinf.pstatic.net%2F2512_000_1%2F20130825213048883_MOHWHB1G3.jpg%2Fi-c-30.jpg%3Ftype%3Dm4500_4500_fst_n%26wm%3DY%22&twidth=352&theight=80&opts=17">
               <br>
-               <span>주황</span><br>
-               <span>(Orange)</span>
-           </td>
-           <td>
+                <span>주황</span><br>
+                <span>(Orange)</span>
+             </td>
+            <td>
              <img style="width:35px; height:35px; border-radius:20px;" src="https://dthumb-phinf.pstatic.net/?src=%22https%3A%2F%2Fdbscthumb-phinf.pstatic.net%2F2512_000_1%2F20130825213141805_R5CXRESO9.jpg%2Fi-c-68.jpg%3Ftype%3Dm4500_4500_fst_n%26wm%3DY%22&twidth=354&theight=80&opts=17">
               <br>
                <span>노랑</span><br>
@@ -295,7 +293,6 @@
                <span>(Brown)</span>
            </td>
          </tr>
-
             <tr>
               <button>
            <td>
@@ -395,7 +392,7 @@
       </v-card>
     </v-dialog>
   </v-row>
-                  </div>
+ </div>
                      <br>
                           <span class="font-color-blue">
                             <i class="xi-caret-up"></i> 베스트 탭, 카테고리 페이지 및 검색페이지의 필터에 적용되며, 선택하지 않으실 경우 색상필터를 사용한 검색결과에 노출되지 않습니다. <br>
@@ -405,21 +402,102 @@
                    </td>
                   </tr>
 
-                   <tr>
-                        <td class="align-middle">
-                            스타일필터 <span class="font-color-red">*</span>
-                         </td>
-                         <label class="radio-inline">
-                           <div class="radio"><span class="checked"><input type="radio" name="colorCode"  class="ui-control"  ></span></div> 사용안함
-                               </label>
-                           <label class="radio-inline">
-                                  <div class="radio"><span><input type="radio" name="colorCode"  class="ui-control"  ></span></div> 사용함
-                     </label>
+                   <tr style="border: 1px solid #ddd;">
+                     <td class="style-filter" style="border: 1px solid #ddd;">
+                       스타일필터 <span class="font-color-red">*</span>
+                     </td>
+                    <label class="radio-inline">
+                      <div class="radio">
+                        <span class="checked">
+                          <input type="radio" name="styleCode" class="ui-control" disabled="disabled">
+                        </span>
+                       </div> 선택안함
+                    </label>
+                      <label class="radio-inline">
+                      <div class="radio">
+                        <span class="checked">
+                          <input type="radio" name="styleCode" class="ui-control" disabled="disabled">
+                        </span>
+                       </div> 심플베이직
+                    </label>
+                      <label class="radio-inline">
+                      <div class="radio">
+                        <span class="checked">
+                          <input type="radio" name="styleCode" class="ui-control" disabled="disabled">
+                        </span>
+                       </div> 러블리
+                    </label>
+                      <label class="radio-inline">
+                      <div class="radio">
+                        <span class="checked">
+                          <input type="radio" name="styleCode" class="ui-control" disabled="disabled">
+                        </span>
+                       </div> 페미닌
+                    </label>
+                      <label class="radio-inline">
+                      <div class="radio">
+                        <span class="checked">
+                          <input type="radio" name="styleCode" class="ui-control" disabled="disabled">
+                        </span>
+                       </div> 캐주얼
+                    </label>
+                      <label class="radio-inline">
+                      <div class="radio">
+                        <span class="checked">
+                          <input type="radio" name="styleCode" class="ui-control" disabled="disabled">
+                        </span>
+                       </div> 섹시글램
+                    </label>
+                      <span class="font-color-blue">
+                         <i class="xi-caret-up"></i> 베스트 탭, 카테고리 페이지 및 검색페이지의 필터에 적용되며, 선택하지 않으실 경우 색상필터를 사용한 검색결과에 노출되지 않습니다. <br>
+                        <i class="xi-caret-up"></i> 1개 스타일만 선택 가능하며, 브랜드 및 뷰티&다이어트 카테고리 상품의 경우 선택하실 수 없습니다. </span>
                    </tr>
+                   <tr style="border: 1px solid #ddd;">
+                    <td style="border: 1px solid #ddd;">
+                           연령필터 <span class="font-color-red">*</span>
+                    </td>
+                      <td>
+                       <div class="col-md-12">
+                         <button type="button" class="age-filter" > 데이터받을곳 </button>
+                         <br><br>
+                       <span class="font-color-blue">
+                            <i class="xi-caret-up"></i> 베스트 탭, 카테고리 페이지 및 검색페이지의 필터에 적용되며, 셀러 정보 셀러태그정보의 연령대가 자동으로 적용됩니다.<br>
+                            <i class="xi-caret-up"></i> 브랜드 및 뷰티 다이어트 카테고리 상품의 경우 적용되지 않습니다.<br>
+                            <i class="xi-caret-up"></i> 해당 정보는 상품단위로 적용이 불가능하며(셀러 단위로만 가능), 수정을 원하실 경우 카카오 플러스친구 '브랜디셀러'로 연락 부탁드립니다.
+                      </span>
+                      </div>
+                    </td>
+                   </tr>
+                    <tr>
+                    <td style="border: 1px solid #ddd;">
+                         상세 상품정보 <span class="font-color-red">*</span>
+                    </td>
+                    <ckeditor :editor="editor" v-model="editorData" :config="editorConfig" class="ckeditor"></ckeditor>
+                    </tr>
                 </tbody>
               </table>
             </div>
           </div>
+           <div class="portlet-title">
+            <div class="caption">
+              <i class="xi-pen-o" style="color: black;" />
+              <span> 옵션정보 </span>
+            </div>
+          </div>
+          <div class="col-md-12"><table class="table-in-portlet" style="border: 1px solid rgb(221, 221, 221);">
+           <tbody>
+             <tr style="border: 1px solid rgb(221, 221, 221);">
+               <td width="35%" class="seller-choice" style="border: 1px solid rgb(221, 221, 221);"> 셀러선택 
+                      <span class="font-color-red">*</span>
+           </td>    
+          </tr>
+        </tbody>
+       </table>
+    </div>
+
+          
+
+
         </div>
       </div>
     </div>
@@ -427,6 +505,7 @@
 </template>
 
 <script>
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 export default {
   el : `#app`,
@@ -459,6 +538,11 @@ export default {
         ,contury: [
           {value : 'a', text : "한국"}
         ],url :null,
+        editor: ClassicEditor,
+        editorData: '<p>브랜디 프로젝트</p>',
+        editorConfig: {
+            // The configuration of the editor.
+        },
 
      };
   },
@@ -475,11 +559,10 @@ export default {
 
 
 </script>
-
 <style lang="scss">
 .ProductRegist {
   display: flex;
-}
+} 
 .page_content {
   width: 100%;
   height: 100%;
@@ -523,7 +606,7 @@ export default {
     margin-bottom: 25px;
     padding: 0px;
     -webkit-box-shadow1: 0 1px 4px rgba(0, 0, 0, 0.07);
-    border: 1px solid #ddd;
+    border: 1px solid #888;
     border-radius: 4px;
 
     .portlet-title {
@@ -623,7 +706,7 @@ export default {
             border: 1px solid #888;
         }
         .color-filter{
-          border: 1px solid #888;
+          border: 1px solid #ddd;
           width: 200px;
         }
         .one-line{
@@ -650,6 +733,19 @@ export default {
     .li-tag{
           margin-top: 15px;
         }
+    .age-filter{
+      background-color: white;
+      width: 100px;
+      height: 12px;
+      border-radius: 15px;
+    }
+    .ckeditor{
+     display: block;
+     border: 1px solid #ddd;
+     border-radius: 4px;
+     padding: 0 3px;
+     background: #eee;
+    }
   // .seller_tr {
   //   height: 20px !important;
   // }
