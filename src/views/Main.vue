@@ -3,8 +3,8 @@
     <Header />
     <Layout>
       <router-view></router-view>
-    </Layout>
-    <MainFooter />
+     
+    </Layout> <MainFooter />
   </div>
 </template>
 
