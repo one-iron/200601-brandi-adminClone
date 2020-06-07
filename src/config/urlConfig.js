@@ -3,4 +3,4 @@ export const URL = 'http://10.250.2.85:8080/'; //vue local url 주소입니다.
 export const SJ_URL = 'http://10.250.2.195:5000'; // 성준님 2층 url
 export const YE_RUL = ''; // 예은님 url
 export const JA_URL = ''; // 진아님 url
-export const JH_RUL = 'http://192.168.7.41:5000'; // 진현님 url
+export const JH_RUL = 'http://10.58.5.152:5000'; // 진현님 url

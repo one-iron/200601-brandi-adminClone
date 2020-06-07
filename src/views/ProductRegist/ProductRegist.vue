@@ -24,7 +24,7 @@
                         </div>
                     </div>
 
-                    <div class="row" style="border:1px solid #888; background-color: #f9f9f9;">
+                    <div class="row">
                         <div class="col-md-12">
                             <table class="table-in-portlet">
                                 <tbody>
@@ -1070,7 +1070,7 @@
                                             <div class="portlet-title">
                                                 <div class="caption">
                                                     <i class="xi-pen-o" style="color: black;"></i>
-                                                    <span>옵션정보</span>
+                                                    <span>판매정보</span>
                                                 </div>
                                             </div>
                                             <div
@@ -1088,31 +1088,21 @@
                                                             >
                                                                 <td
                                                                     width="15%"
+                                                                    height="50px"
                                                                     class="seller-choice default-info-left"
-                                                                >
-                                                                    옵션 설정
-                                                                    <span
-                                                                        class="font-color-red"
-                                                                    >*</span>
-                                                                </td>
-                                                                <td
-                                                                    style="width: 300px; display: flex;"
-                                                                >
-                                                                    <div class="radio-list">
-                                                                        <label class="radio-inline">
-                                                                            <div class="radio">
-                                                                                <span
-                                                                                    class="checked"
-                                                                                >
-                                                                                    <input
-                                                                                        type="radio"
-                                                                                        name="sell"
-                                                                                        value="Y"
-                                                                                    />
-                                                                                </span>
-                                                                            </div>기본 옵션
-                                                                        </label>
+                                                                >도매원가</td>
+                                                                <td class="td-wholesale">
+                                                                    <div class="input-group">
+                                                                        <input
+                                                                            class="wholesale"
+                                                                            type="text"
+                                                                            maxlength="8"
+                                                                            placeholder="0"
+                                                                        />
                                                                     </div>
+                                                                    <span
+                                                                        class="input-group-addon"
+                                                                    >원</span>
                                                                 </td>
                                                             </tr>
                                                             <tr
@@ -1120,249 +1110,165 @@
                                                             >
                                                                 <td
                                                                     width="15%"
+                                                                    height="50px"
                                                                     class="seller-choice default-info-left"
-                                                                >옵션 정보</td>
+                                                                >
+                                                                    판매가
+                                                                    <span
+                                                                        class="font-color-red"
+                                                                    >*</span>
+                                                                </td>
+                                                                <td class="td-wholesale">
+                                                                    <div class="input-group">
+                                                                        <input
+                                                                            class="wholesale"
+                                                                            type="text"
+                                                                            maxlength="8"
+                                                                            placeholder="0"
+                                                                        />
+                                                                    </div>
+                                                                    <span
+                                                                        class="input-group-addon"
+                                                                    >원</span>
+                                                                </td>
+                                                                <span class="font-color-blue">
+                                                                    <i class="xi-caret-up"></i>
+                                                                    판매가는 원화기준 10원 이상이며 가격 입력 시 10원 단위로 입력해 주세요.
+                                                                </span>
+                                                            </tr>
+                                                            <tr>
+                                                                <td
+                                                                    width="15%"
+                                                                    height="50px"
+                                                                    class="seller-choice default-info-left"
+                                                                >
+                                                                    할인정보
+                                                                    <span
+                                                                        class="font-color-red"
+                                                                    >*</span>
+                                                                </td>
                                                                 <td colspan="3">
-                                                                    <div class="basic-option-wrap">
-                                                                        <table
-                                                                            class="table table-bordered"
-                                                                        >
-                                                                            <thead>
-                                                                                <tr class="heading">
-                                                                                    <th>옵션항목</th>
-                                                                                    <th>상품옵션명</th>
-                                                                                    <th>옵션값 추가/삭제</th>
-                                                                                    <th></th>
-                                                                                </tr>
-                                                                            </thead>
+                                                                    <div class="col-md-6 td-line">
+                                                                        <table>
                                                                             <tbody>
-                                                                                <tr
-                                                                                    class="option-group-1"
-                                                                                >
+                                                                                <tr class="td-line">
                                                                                     <td
-                                                                                        width="15%"
-                                                                                        rowspan="1"
-                                                                                    >색상</td>
-                                                                                    <td>
-                                                                                        <select
-                                                                                            name="basicOptionSelect"
-                                                                                            class="form-control"
-                                                                                            placeholder="컬러 옵션을 선택해 주세요."
-                                                                                            title
-                                                                                        >
-                                                                                            <option
-                                                                                                value="0"
-                                                                                            >색상 옵션을 선택해 주세요.</option>
-                                                                                            <option
-                                                                                                value="2"
-                                                                                            >Black</option>
-                                                                                            <option
-                                                                                                value="3"
-                                                                                            >White</option>
-                                                                                            <option
-                                                                                                value="4"
-                                                                                            >Gray</option>
-                                                                                            <option
-                                                                                                value="5"
-                                                                                            >Ivory</option>
-                                                                                            <option
-                                                                                                value="6"
-                                                                                            >Navy</option>
-                                                                                        </select>
-                                                                                    </td>
-
-                                                                                    <td width="15%">
-                                                                                        <div
-                                                                                            class="text-center"
-                                                                                        >
-                                                                                            <v-btn
-                                                                                                class="mx-2"
-                                                                                                fab
-                                                                                                dark
-                                                                                                small
-                                                                                                color="indigo"
-                                                                                            >
-                                                                                                <v-icon
-                                                                                                    dark
-                                                                                                >mdi-plus</v-icon>
-                                                                                            </v-btn>
-                                                                                            <v-btn
-                                                                                                class="mx-2"
-                                                                                                fab
-                                                                                                dark
-                                                                                                small
-                                                                                                color="primary"
-                                                                                            >
-                                                                                                <v-icon
-                                                                                                    dark
-                                                                                                >mdi-minus</v-icon>
-                                                                                            </v-btn>
-                                                                                        </div>
-                                                                                    </td>
+                                                                                        class="td-line"
+                                                                                    >할인율</td>
+                                                                                    <td
+                                                                                        class="td-line"
+                                                                                        width="200px"
+                                                                                    >할인가</td>
                                                                                 </tr>
-                                                                                <tr
-                                                                                    class="option-group-2"
-                                                                                >
+                                                                                <tr class="td-line">
                                                                                     <td
-                                                                                        width="15%"
-                                                                                        rowspan="1"
-                                                                                    >사이즈</td>
-                                                                                    <td>
-                                                                                        <select
-                                                                                            name="basicOptionSelect"
-                                                                                            class="form-control"
-                                                                                            placeholder="사이즈 옵션을 선택해 주세요."
-                                                                                            tabindex="-1"
-                                                                                            title
-                                                                                        >
-                                                                                            <option
-                                                                                                value="0"
-                                                                                            >사이즈 옵션을 선택해 주세요.</option>
-                                                                                            <option
-                                                                                                value="2"
-                                                                                            >라지</option>
-                                                                                            <option
-                                                                                                value="3"
-                                                                                            >미디엄</option>
-                                                                                            <option
-                                                                                                value="4"
-                                                                                            >스몰</option>
-                                                                                            <option
-                                                                                                value="5"
-                                                                                            >투엑스</option>
-                                                                                            <option
-                                                                                                value="6"
-                                                                                            >쓰리엑스</option>
-                                                                                        </select>
-                                                                                    </td>
-
-                                                                                    <td width="15%">
-                                                                                        <div
-                                                                                            class="text-center"
-                                                                                        >
-                                                                                            <v-btn
-                                                                                                class="mx-2"
-                                                                                                fab
-                                                                                                dark
-                                                                                                small
-                                                                                                color="indigo"
-                                                                                            >
-                                                                                                <v-icon
-                                                                                                    dark
-                                                                                                >mdi-plus</v-icon>
-                                                                                            </v-btn>
-                                                                                            <v-btn
-                                                                                                class="mx-2"
-                                                                                                fab
-                                                                                                dark
-                                                                                                small
-                                                                                                color="primary"
-                                                                                            >
-                                                                                                <v-icon
-                                                                                                    dark
-                                                                                                >mdi-minus</v-icon>
-                                                                                            </v-btn>
-                                                                                        </div>
-                                                                                    </td>
-                                                                                </tr>
-                                                                            </tbody>
-                                                                            <tfoot>
-                                                                                <tr class="heading">
-                                                                                    <td
-                                                                                        class="vertical-align-middle"
-                                                                                    >재고관리여부</td>
-                                                                                    <td
-                                                                                        colspan="6"
-                                                                                        class="vertical-align-middle"
+                                                                                        class="td-line"
                                                                                     >
                                                                                         <div>
+                                                                                            <input
+                                                                                                type="text"
+                                                                                            />
+                                                                                            <span>%</span>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <td
+                                                                                        class="td-line"
+                                                                                    >
+                                                                                        <div>
+                                                                                            <input
+                                                                                                type="text"
+                                                                                            />원
+                                                                                            <button
+                                                                                                type="button"
+                                                                                            >할인판매가적용</button>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr class="td-line">
+                                                                                    <td
+                                                                                        class="td-line"
+                                                                                    >할인판매가</td>
+                                                                                    <td
+                                                                                        class="td-line"
+                                                                                    >
+                                                                                        <input
+                                                                                            type="text"
+                                                                                        /> "원"
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr class="td-line">
+                                                                                    <td
+                                                                                        class="td-line"
+                                                                                    >할인기간</td>
+                                                                                    <td
+                                                                                        class="td-line"
+                                                                                    >
+                                                                                        <div
+                                                                                            class="td-line"
+                                                                                        >
                                                                                             <label
-                                                                                                class="radio-inline"
+                                                                                                class="discount-label"
                                                                                             >
-                                                                                                <div
-                                                                                                    class="radio"
-                                                                                                >
-                                                                                                    <span
-                                                                                                        class="checked"
-                                                                                                    >
-                                                                                                        <input
-                                                                                                            type="radio"
-                                                                                                            name="basicOptionInventoryUseyn"
-                                                                                                        />
-                                                                                                    </span>
-                                                                                                </div>재고 수량 관리 안함
-                                                                                            </label>
-                                                                                            <label
-                                                                                                class="radio-inline"
-                                                                                            >
-                                                                                                <div
-                                                                                                    class="radio"
-                                                                                                >
+                                                                                                <div>
                                                                                                     <span>
                                                                                                         <input
                                                                                                             type="radio"
-                                                                                                            name="basicOptionInventoryUseyn"
                                                                                                         />
                                                                                                     </span>
-                                                                                                </div>재고 수량 관리
+                                                                                                </div>무기한
+                                                                                            </label>
+                                                                                            <label>
+                                                                                                <div>
+                                                                                                    <span>
+                                                                                                        <input
+                                                                                                            type="radio"
+                                                                                                        />
+                                                                                                    </span>
+                                                                                                </div>기간설정
                                                                                             </label>
                                                                                         </div>
-                                                                                    </td>
-                                                                                </tr>
-                                                                            </tfoot>
-                                                                        </table>
-
-                                                                        <v-btn
-                                                                            color="green"
-                                                                            dark
-                                                                            v-on="on"
-                                                                            style="margin-bottom:30px;"
-                                                                        >적용</v-btn>
-
-                                                                        <table
-                                                                            class="table table-bordered"
-                                                                        >
-                                                                            <thead>
-                                                                                <tr class="heading">
-                                                                                    <th
-                                                                                        class="bd-top"
-                                                                                    >상품옵션정보</th>
-                                                                                    <th
-                                                                                        class="bd-top"
-                                                                                    >일반재고</th>
-                                                                                </tr>
-                                                                            </thead>
-                                                                            <thead>
-                                                                                <tr class="heading">
-                                                                                    <th
-                                                                                        class="bd-top"
-                                                                                    >색상 / 사이즈</th>
-                                                                                </tr>
-                                                                            </thead>
-                                                                            <tbody>
-                                                                                <tr>
-                                                                                    <td
-                                                                                        colspan="11"
-                                                                                    >
-                                                                                        <label>옵션정보를 입력 후 [적용] 버튼을 눌러주세요.</label>
+                                                                                        <div>
+                                                                                            <div
+                                                                                                class="col-md-12"
+                                                                                            >
+                                                                                                <div
+                                                                                                    class="col-md-12"
+                                                                                                >
+                                                                                                    <div
+                                                                                                        class="input-group"
+                                                                                                    >
+                                                                                                        <input
+                                                                                                            type="text"
+                                                                                                            placeholder="클릭해주세요"
+                                                                                                        />
+                                                                                                        <span
+                                                                                                            class="input-group-addon"
+                                                                                                        >~</span>
+                                                                                                        <input
+                                                                                                            type="text"
+                                                                                                            placeholder="클릭해주세요"
+                                                                                                        />
+                                                                                                        <br />
+                                                                                                        <span>* 할인기간을 설정시 기간만료되면 자동으로 정상가로 변경 됩니다.</span>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
                                                                                     </td>
                                                                                 </tr>
                                                                             </tbody>
                                                                         </table>
-
-                                                                        <div
+                                                                        <span
                                                                             class="font-color-blue"
                                                                         >
-                                                                            <i class="xi-caret-up"></i>
-                                                                            도매처옵션명 조합은 최대 100자까지 표시됩니다.
+                                                                            <i class="xi-caret-up"></i> 할인판매가 = 판매가 * 할인율
                                                                             <br />
-                                                                        </div>
+                                                                            <i class="xi-caret-up"></i> 할인 판매가 적용 버튼을 클릭 하시면 판매가 정보가 자동 계산되어집니다.
+                                                                            <br />
+                                                                            <i class="xi-caret-up"></i> 할인 판매가는 원화기준 10원 단위로 자동 절사됩니다.
+                                                                        </span>
                                                                     </div>
                                                                 </td>
-                                                                <span
-                                                                    class="font-color-blue"
-                                                                    style="margin-top: 10px;"
-                                                                ></span>
                                                             </tr>
                                                         </tbody>
                                                     </table>
@@ -1527,6 +1433,7 @@ export default {
     .row {
         margin-right: -15px;
         margin-left: -15px;
+
         .col-md-12 {
             width: 100%;
         }
@@ -1654,6 +1561,45 @@ export default {
     .default-info-left {
         background-color: #eee;
         text-align: center;
+    }
+
+    .td-wholesale {
+        display: flex;
+    }
+
+    .input-group {
+        padding-bottom: 10px;
+        width: 240px !important;
+        background-color: white;
+        border-radius: 10px;
+        margin-top: 10px;
+        margin-left: 10px;
+    }
+
+    .wholesale {
+        position: relative;
+        z-index: 2;
+        float: left;
+        width: 100%;
+        margin-left: 10px;
+    }
+
+    .input-group-addon {
+        border-color: #e5e5e5;
+        background: #e5e5e5;
+        min-width: 39px;
+        margin-top: 10px;
+    }
+
+    .td-line {
+        border: 1px solid black;
+    }
+
+    .discount-label {
+        width: 120px;
+    }
+    .discount-div {
+        background-color: #f9f9f9;
     }
 
     // .seller_tr {
