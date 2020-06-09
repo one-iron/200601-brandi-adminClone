@@ -5,18 +5,18 @@
     <img class="signUpBanner" src="http://sadmin.brandi.co.kr/include/img/seller_join_top_2.png" />
     <p>가입 정보</p>
 
-    <!-- user check input -->
+    <!-- account check input -->
     <input
-      v-model="user.value"
-      v-bind:class="{ defaultInput: user.state, warningInput: !user.state }"
+      v-model="account.value"
+      v-bind:class="{ defaultInput: account.state, warningInput: !account.state }"
       placeholder="아이디"
-      @keyup="() => regCheck(regs.idReg,this.user)"
+      @keyup="() => regCheck(regs.idReg,this.account)"
     />
     <div
-      v-bind:class="{ defaultText: user.state || user.value.length > 0, warningText: user.state || user.value.length == 0}"
+      v-bind:class="{ defaultText: account.state || account.value.length > 0, warningText: account.state || account.value.length == 0}"
     >필수 입력 항목입니다.</div>
     <div
-      v-bind:class="{ defaultText: user.state || user.value.length == 0, warningText: !user.state && user.value.length >= 1}"
+      v-bind:class="{ defaultText: account.state || account.value.length == 0, warningText: !account.state && account.value.length >= 1}"
     >아이디는 5~20글자의 영문, 숫자, 언더바, 하이픈만 사용 가능하며 시작 문자는 영문 또는 숫자입니다.</div>
 
     <!-- password check input -->
@@ -46,19 +46,19 @@
       v-bind:class="{ defaultText: rePw.value.length == 0 || password.value === rePw.value, warningText: password.value !== rePw.value}"
     >비밀번호가 일치하지 않습니다.</div>
 
-    <!-- phone_number check input -->
+    <!-- manager_phone check input -->
     <div class="signUpManager">
       <p>담당자 정보</p>
       <p>(*실제 샵을 운영하시는 분)</p>
     </div>
     <input
-      v-model="phone_number.value"
-      v-bind:class="{ defaultInput: phone_number.state, warningInput: !phone_number.state }"
+      v-model="manager_phone.value"
+      v-bind:class="{ defaultInput: manager_phone.state, warningInput: !manager_phone.state }"
       placeholder="핸드폰번호"
-      @keyup="() => regCheck(regs.phReg,this.phone_number)"
+      @keyup="() => regCheck(regs.phReg,this.manager_phone)"
     />
     <div
-      v-bind:class="{ defaultText: phone_number.state, warningText: !phone_number.state}"
+      v-bind:class="{ defaultText: manager_phone.state, warningText: !manager_phone.state}"
     >올바른 정보를 입력해주세요.</div>
     <i class="xi-info">입점 신청 후 브랜디 담당자가 연락을 드릴 수 있으니 정확한 정보를 기입해주세요.</i>
 
@@ -78,45 +78,45 @@
 
     <!-- name check input -->
     <input
-      v-model="name.value"
-      v-bind:class="{ defaultInput: name.state, warningInput: !name.state }"
+      v-model="seller_name.value"
+      v-bind:class="{ defaultInput: seller_name.state, warningInput: !seller_name.state }"
       placeholder="셀러명(상호)"
-      @keyup="() => regCheck(regs.nameReg,this.name)"
+      @keyup="() => regCheck(regs.nameReg,this.seller_name)"
     />
     <div
-      v-bind:class="{ defaultText: name.state || name.value.length > 0 , warningText: name.value.length == 0 || !name.state}"
+      v-bind:class="{ defaultText: seller_name.state || seller_name.value.length > 0 , warningText: seller_name.value.length == 0 || !seller_name.state}"
     >필수 입력 항목입니다.</div>
     <div
-      v-bind:class="{ defaultText: name.state || name.value.length == 0, warningText: !name.state}"
+      v-bind:class="{ defaultText: seller_name.state || seller_name.value.length == 0, warningText: !seller_name.state}"
     >한글,영문,숫자만 입력해주세요.</div>
 
     <!-- engName check input -->
     <input
-      v-model="eng_name.value"
-      v-bind:class="{ defaultInput: eng_name.state, warningInput: !eng_name.state }"
+      v-model="seller_name_eng.value"
+      v-bind:class="{ defaultInput: seller_name_eng.state, warningInput: !seller_name_eng.state }"
       placeholder="영문 셀러명 (영문상호)"
-      @keyup="() => regCheck(regs.engNameReg,this.eng_name)"
+      @keyup="() => regCheck(regs.engNameReg,this.seller_name_eng)"
     />
     <div
-      v-bind:class="{ defaultText: eng_name.state || eng_name.value.length > 0 , warningText: eng_name.value.length == 0 || !eng_name.state}"
+      v-bind:class="{ defaultText: seller_name_eng.state || seller_name_eng.value.length > 0 , warningText: seller_name_eng.value.length == 0 || !seller_name_eng.state}"
     >필수 입력 항목입니다.</div>
     <div
-      v-bind:class="{ defaultText: eng_name.state || eng_name.value.length == 0, warningText: !eng_name.state}"
+      v-bind:class="{ defaultText: seller_name_eng.state || seller_name_eng.value.length == 0, warningText: !seller_name_eng.state}"
     >셀러 영문명은 소문자만 입력가능합니다.</div>
 
     <!-- tel check input -->
     <input
-      v-model="service_number.value"
-      v-bind:class="{ defaultInput: service_number.state, warningInput: !service_number.state }"
+      v-model="cs_phone.value"
+      v-bind:class="{ defaultInput: cs_phone.state, warningInput: !cs_phone.state }"
       placeholder="고객센터 전화번호"
-      @keyup="() => regCheck(regs.telReg,this.service_number)"
+      @keyup="() => regCheck(regs.telReg,this.cs_phone)"
       class="defaultInput"
     />
     <div
-      v-bind:class="{ defaultText: service_number.state || service_number.value.length > 0 , warningText: service_number.value.length == 0 || !service_number.state}"
+      v-bind:class="{ defaultText: cs_phone.state || cs_phone.value.length > 0 , warningText: cs_phone.value.length == 0 || !cs_phone.state}"
     >필수 입력 항목입니다.</div>
     <div
-      v-bind:class="{ defaultText: service_number.value >= 0 || service_number.state, warningText: !service_number.state}"
+      v-bind:class="{ defaultText: cs_phone.value >= 0 || cs_phone.state, warningText: !cs_phone.state}"
     >고객센터 전화번호는 숫자와 하이픈만 입력가능합니다.</div>
 
     <!-- url check input -->
@@ -124,7 +124,7 @@
       v-model="site_url.value"
       v-bind:class="{ defaultInput: site_url.state, warningInput: !site_url.state }"
       placeholder="사이트 URL"
-      @keyup="() => regCheck(regs.urlReg,this.site_url)"
+      @keyup="() => regCheck(regs.urlReg02,this.site_url)"
     />
     <div
       v-bind:class="{ defaultText: site_url.state || site_url.value.length > 0 , warningText: site_url.value.length == 0 || !site_url.state}"
@@ -144,67 +144,55 @@
 </template>
 
 <script>
-import axios from "axios";
-import { SJ_URL } from "../../config/urlConfig";
-import {
-  idReg,
-  pwReg,
-  phReg,
-  nameReg,
-  engNameReg,
-  telReg,
-  urlReg
-} from "../../config/reg";
+import axios from 'axios';
+import { JH_URL } from '../../config/urlConfig';
+import { idReg, pwReg, phReg, nameReg, engNameReg, telReg, urlReg02 } from '../../config/reg';
 export default {
-  name: "SignUpBox",
+  name: 'SignUpBox',
   mounted: function() {
     window.scrollTo({
       top: 0,
-      behavior: "smooth"
+      behavior: 'smooth',
     });
   },
   data() {
     return {
-      regs: { idReg, pwReg, phReg, nameReg, engNameReg, telReg, urlReg },
-      user: { value: "", state: true },
-      password: { value: "", state: true },
-      rePw: { value: "", state: true },
-      phone_number: { value: "", state: true },
-      seller_attribute_id: { value: "", state: true },
-      name: { value: "", state: true },
-      eng_name: { value: "", state: true },
-      service_number: { value: "", state: true },
-      site_url: { value: "", state: true }
+      regs: { idReg, pwReg, phReg, nameReg, engNameReg, telReg, urlReg02 },
+      account: { value: '', state: true },
+      password: { value: '', state: true },
+      rePw: { value: '', state: true },
+      manager_phone: { value: '', state: true },
+      seller_attribute_id: { value: '', state: true },
+      seller_name: { value: '', state: true },
+      seller_name_eng: { value: '', state: true },
+      cs_phone: { value: '', state: true },
+      site_url: { value: '', state: true },
     };
   },
   methods: {
     regCheck: function(reg, inputName) {
-      reg.test(inputName.value)
-        ? (inputName.state = true)
-        : (inputName.state = false);
+      reg.test(inputName.value) ? (inputName.state = true) : (inputName.state = false);
     },
 
     signUpClick: function() {
-      if (confirm("입력하신 정보로 셀러신청을 하시겠습니까?") == true) {
+      if (confirm('입력하신 정보로 셀러신청을 하시겠습니까?') == true) {
         axios
-          .post(`${SJ_URL}/sign-up`, {
-            method: "POST",
-            user: this.user.value,
+          .post(`${JH_URL}/user`, {
+            method: 'POST',
+            account: this.account.value,
             seller_attribute_id: this.seller_attribute_id.value,
             password: this.password.value,
-            phone_number: this.phone_number.value,
-            name: this.name.value,
-            eng_name: this.eng_name.value,
-            service_number: this.service_number.value,
+            manager_phone: this.manager_phone.value,
+            seller_name: this.seller_name.value,
+            seller_name_eng: this.seller_name_eng.value,
+            cs_phone: this.cs_phone.value,
             site_url: this.site_url.value,
-            end_date: this.end_date
+            end_date: this.end_date,
           })
           .then(res => {
             if (res.status === 200) {
-              alert(
-                "신청이 완료되었습니다.검토 후 연락드리겠습니다.감사합니다."
-              );
-              this.$router.push("/");
+              alert('신청이 완료되었습니다.검토 후 연락드리겠습니다.감사합니다.');
+              this.$router.push('/');
             }
           })
           .catch(error => console.log(error.response.data.message));
@@ -215,8 +203,8 @@ export default {
         // });
       }
     },
-    radios: function() {}
-  }
+    radios: function() {},
+  },
 };
 </script>
 

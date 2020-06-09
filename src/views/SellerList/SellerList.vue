@@ -220,9 +220,9 @@
 
 
 <script>
-import axios from "axios";
-import { sellerListHeaders } from "../../config/SellerListDatas";
-import { URL } from "../../config/urlConfig";
+import axios from 'axios';
+import { sellerListHeaders } from '../../config/SellerListDatas';
+import { SJ_URL } from '../../config/urlConfig';
 
 export default {
   data() {
@@ -232,23 +232,23 @@ export default {
       usersData: null,
       pagesData: null,
       searchDatas: {
-        meta_data_id: "",
-        seller_id: "",
-        seller_eng_name: "",
-        seller_kor_name: "",
-        seller_number: "",
-        manager_infos_name: "",
-        seller_status: "",
-        manager_infos_phone_number: "",
-        manager_infos_email: "",
-        detail_attribute: "",
-        created_at: ""
-      }
+        meta_data_id: '',
+        seller_id: '',
+        seller_eng_name: '',
+        seller_kor_name: '',
+        seller_number: '',
+        manager_infos_name: '',
+        seller_status: '',
+        manager_infos_phone_number: '',
+        manager_infos_email: '',
+        detail_attribute: '',
+        created_at: '',
+      },
     };
   },
   //로컬에 목업데이터를 위치해놓고, 해당 데이터들을 get하고 있습니다.
   mounted: function() {
-    axios.get(`${URL}/sellerList.json`).then(response => {
+    axios.get(`${SJ_URL}/sellerList.json`).then(response => {
       this.infoDatas = response.data.seller_list;
       this.usersData = response.data.number_of_users;
       this.pagesData = response.data.number_of_pages;
@@ -259,8 +259,8 @@ export default {
       //이 곳에서 serachDatas의 내용을 post에 실어 백엔드에 보내준다.
       //그 다음에 바로 해당 내용들을 get해서 리스트에 뿌려주어야 한다.
       alert(this.searchDatas.meta_data_id);
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>

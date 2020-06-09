@@ -45,44 +45,44 @@
 </template>
 
 <script>
-import axios from "axios";
-import { SJ_URL } from "../../config/urlConfig";
+import axios from 'axios';
+import { JH_URL } from '../../config/urlConfig';
 export default {
   data() {
     return {
       loginState: true,
       passwordState: true,
-      loginValue: "",
-      passwordValue: ""
+      loginValue: '',
+      passwordValue: '',
     };
   },
   mounted: function() {
     window.scrollTo({
       top: 0,
-      behavior: "smooth"
+      behavior: 'smooth',
     });
   },
   methods: {
     // 로그인 클릭시 실행되는 함수 : 아이디, 비밀번호 문자열 확인 후 0 이면 state false 리턴
     // 이 곳에 아이디, 비밀번호가 맞으면 백으로 아이디, 비밀번호 API POST 할 예정
     inputHandler: function() {
-      this.loginValue.length ? "" : (this.loginState = false);
-      this.passwordValue.length ? "" : (this.passwordState = false);
+      this.loginValue.length ? '' : (this.loginState = false);
+      this.passwordValue.length ? '' : (this.passwordState = false);
 
       if (this.passwordState && this.loginState) {
         axios
-          .post(`${SJ_URL}/sign-in`, {
-            method: "POST",
-            user: this.loginValue,
-            password: this.passwordValue
+          .post(`${JH_URL}/user/sign-in`, {
+            method: 'POST',
+            account: this.loginValue,
+            password: this.passwordValue,
           })
           .then(response => {
-            if (response.data.access_token) {
-              localStorage.setItem("access_token", response.data.access_token);
-              localStorage.setItem("id", this.loginValue);
-              this.$router.push("/main/seller/sellerlist");
+            if (response.data.token) {
+              localStorage.setItem('token', response.data.token);
+              localStorage.setItem('id', this.loginValue);
+              this.$router.push('/main/seller/sellerlist');
             } else {
-              alert("아이디 또는 비밀번호가 다릅니다.");
+              alert('아이디 또는 비밀번호가 다릅니다.');
             }
           })
           .catch(err => {
@@ -107,8 +107,8 @@ export default {
       } else if (this.passwordState && !this.passwordValue.length) {
         this.passwordState = false;
       }
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -130,7 +130,7 @@ export default {
   p {
     margin: 20px 0;
     font-size: 24px;
-    font-family: "Open Sans", sans-serif;
+    font-family: 'Open Sans', sans-serif;
     background-color: #ffffff;
     font-weight: 300 !important;
     padding: 20px 30px 0px 30px;
@@ -203,7 +203,7 @@ export default {
     width: 100%;
     margin-top: 20px;
     height: 120px;
-    background-image: url("http://sadmin.brandi.co.kr/include/img/admin_mainbn_helpi.png");
+    background-image: url('http://sadmin.brandi.co.kr/include/img/admin_mainbn_helpi.png');
     background-size: contain;
     cursor: pointer;
   }
