@@ -1,0 +1,32 @@
+{
+  "seller_id": "",
+  "on_sale": "",
+  "on_list": 1,
+  "first_category_id": 1,
+  "second_category_id": 2,
+  "manufacturer": "string",
+  "manufacture_date": "date",
+  "manufacture_country_id": 1,
+  "name": "string",
+  "description_short": "string",
+  "images": [
+    {
+      "url": "url"
+    }
+  ],
+  "color_filter_id": "none",
+  "style_filter_id": "none",
+  "description_detail": "상세 상품 정보",
+  "option": [
+    {
+      "color_id": 1,
+      "size_id": 3,
+      "stock": 30
+    }
+  ],
+  "price": 20000,
+  "discount_rate": 12,
+  "discount_price": 17600,
+  "discount_start": "2020-06-02 14:37",
+  "discount_end": "2020-06-26 14:37"
+}
