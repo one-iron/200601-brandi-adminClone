@@ -9,7 +9,7 @@
         <div class="page_bar">
           <ul class="page_ul">
             <div class="h2 mb-0">
-              <i class="xi-home-o" style="color: black;" />
+              <i class="xi-home-o"  />
             </div>
             <li class="li-tag">상품관리 ></li>
             <li class="li-tag">상품 관리 ></li>
@@ -19,7 +19,7 @@
         <div class="portlet">
           <div class="portlet-title">
             <div class="caption">
-              <i class="xi-pen-o" style="color: black;" />
+              <i class="xi-pen-o" />
               <span>기본정보</span>
             </div>
           </div>
@@ -30,53 +30,40 @@
                 <tbody>
                   <!-- 셀러선택 테이블 -->
                   <tr>
-                    <td class="seller-choice default-info-left" width="15%">
+                    <td class="default-info-left td-border" width="15%">
                       셀러선택
                       <span class="font-color-red">*</span>
                     </td>
-                    <td class="seller-search">
-                      <b-form-input
-                        style="margim:20px 30px; width:250px; border:none"
+                    <td class="seller-search td-border">
+                      <b-form-input                    
                         placeholder="셀러를 검색해주세요"
-                        class="search_seller"
+                        class="seller-search2"
                         readonly
                       />
-                      <v-app id="inspire" style="height:50px;">
+                      <!-- 셀 러 검 색   모 달 창  시작하는곳 -->
+                      <v-app id="inspire" >
                         <v-row>
                           <v-dialog v-model="dialog" persistent max-width="500">
                             <template v-slot:activator="{ on }">
-                              <v-btn color="green" dark v-on="on" style="margin-left:30px;">셀러 검색</v-btn>
+                              <v-btn color="green" dark v-on="on" >셀러 검색</v-btn>
                             </template>
                             <v-card>
                               <v-card-title class="headline">셀러 선택</v-card-title>
                             </v-card>
-                            <v-card-text
-                              style="color:blue; background-color:white"
+                            <v-card-text class="modal-color"
                             >상품을 등록할 셀러를 선택해주세요. (검색 10건)</v-card-text>
-                            <form
-                              style="display:flex; justify-content:center; background-color: white;"
+                            <form class="modal-form"
                             >
-                              <v-card-text style="background-color:white; width:150px; margin:auto">
+                            <!-- 셀러 검색 인풋라인 -->
+                              <v-card-text class="seller-search-input">
                                 <span>셀러 검색</span>
                               </v-card-text>
-                              <v-card-text style="background-color:white">
-                                <v-autocomplete
-                                  v-model="seller_id"
-                                  :items="items"
-                                  :loading="isLoading"
-                                  :search-input.sync="search"
-                                  color="white"
-                                  hide-no-data
-                                  hide-selected
-                                  item-text="Description"
-                                  item-value="API"
-                                  placeholder="Select"
-                                  prepend-icon="mdi-database-search"
-                                  return-object
-                                ></v-autocomplete>
+                              <!-- 모달 내 셀러 검색 인풋태그 창 -->
+                              <v-card-text>
+                                <input type="text" v-model="seller_id" class="modal-input" />
                               </v-card-text>
                             </form>
-                            <v-card-actions style="background-color:white">
+                            <v-card-actions class="modal-color">
                               <v-spacer></v-spacer>
                               <v-btn color="outline-dark" text @click="dialog = false">닫기</v-btn>
                               <b-button variant="primary" text @click="dialog = false">셀러 선택하기</b-button>
@@ -87,51 +74,66 @@
                     </td>
                   </tr>
                   <!-- 판매 여부-->
-                  <tr class="tr-top">
-                    <td class="sold-status default-info-left">판매여부</td>
-                    <td style="width:400px">
-                      <div class="radio-list">
-                        <label class="radio-inline">
+                  <tr>
+                    <td class="sold-status default-info-left td-border">판매여부</td>
+                    <td class="td-border" >
+
+                    <div class="radio-list">
+                        <label>
                           <div class="radio">
-                            <span class="checked">
-                              <input on_sale type="radio" name="sell" value="Y" checked="checked" />
-                            </span>
-                          </div>판매
+                            <button>
+                              <input
+                                v-model="on_sale"
+                                type="radio"
+                                value="1"
+                                 v-on:click="thisisHidden = true"
+                              />
+                             판매
+                            </button>
+                          </div>
                         </label>
-                        <label class="radio-inline">
-                          <div class="radio">
-                            <span>
-                              <input type="radio" name="sell" value="N" />
-                            </span>
-                          </div>미판매
+
+                        <label>
+                          <button>
+                            <input
+                              type="radio"
+                              v-model="on_sale"
+                               value="0"
+                              v-on:click="thisisHidden = !thisisHidden"
+                            />
+                            미판매
+                          </button>
                         </label>
                       </div>
-                      <span class="font-color-blue" style="margin-top:10px;">
+
+
+                   
+                      <span class="font-color-blue style-filter-span" >
                         <i class="xi-caret-up"></i> 미판매 선택시 앱에서 Sold Out으로 표시됩니다.
                       </span>
                     </td>
                   </tr>
                   <!-- 진열 여부 -->
-                  <tr class="tr-top">
+                  <tr>
                     <td class="display-status default-info-left">진열여부</td>
-                    <td style="width:400px">
+                    <td>
                       <div class="radio-list">
-                        <label class="radio-inline">
+                        <label >
                           <div class="radio">
                             <span class="checked">
-                              <input type="radio" name="display" value="Y" checked="checked" />
+                              <input v-model="on_list" type="radio" value="1"  checked="checked" />
                             </span>
                           </div>판매
                         </label>
-                        <label class="radio-inline">
+                        <label >
                           <div class="radio">
                             <span>
-                              <input type="radio" name="display" value="N" />
+                              <input v-model="on_list" type="radio"  value="0" />
                             </span>
                           </div>미판매
                         </label>
                       </div>
-                      <span class="font-color-blue">
+                      <span class="font-color-blue style-filter-span">
                         <i class="xi-caret-up"></i> 미판매 선택시 앱에서 Sold Out으로 표시됩니다.
                       </span>
                     </td>
@@ -158,11 +160,10 @@
                               type="hidden"
                               name="categoryNoArr"
                               value="NOT_SELECTED"
-                              style="border:1px solid black;"
                             />
                             <div>
                               <b-form-select
-                                v-model="selected"
+                                v-model="first_category_id"
                                 :options="options"
                                 size="sm"
                                 class="mt-3"
@@ -171,19 +172,15 @@
                             </div>
                           </td>
                           <td>
-                            <div>
-                              <b-form-select
-                                v-model="selected"
-                                :options="options"
+                                <b-form-select 
                                 size="sm"
                                 class="mt-3"
-                              ></b-form-select>
-                              <!-- <div class="mt-3">Selected: <strong>{{ selected }}</strong></div> -->
-                            </div>
+                                v-model="second_category_id" :options="secondOptions"></b-form-select>
+
                           </td>
                         </tr>
                       </tbody>
-                      <span class="font-color-blue">
+                      <span class="font-color-blue style-filter-span">
                         <i class="xi-caret-up"></i> 카테고리 변경 시 입력한 실측 사이즈 정보는 초기화 됩니다.
                       </span>
                     </td>
@@ -191,24 +188,24 @@
                   <!-- 상품 정보 고시 -->
                   <tr>
                     <td class="product-info-explain default-info-left">상품 정보 고시</td>
-                    <td class="product_info">
+                    <td >
                       <div class="radio-list">
-                        <label class="radio-inline">
+                        <label>
                           <div class="radio">
                             <button>
                               <input
                                 type="radio"
                                 name="information"
                                 value="Y"
-                                checked="checked"
-                                v-on:click="isHidden = true"
+                                checked
+                                v-on:click="isHidden = false"
                               />
                               상품 상세 참조
                             </button>
                           </div>
                         </label>
 
-                        <label class="radio-inline">
+                        <label>
                           <button>
                             <input
                               type="radio"
@@ -219,16 +216,17 @@
                           </button>
                         </label>
                       </div>
-                      <div class="input-directly" v-if="!isHidden">
+                      <div class="input-directly" v-if="isHidden">
                         <div>
                           제조사(수입사) :
-                          <input type="text" class="company-name" />
+                          <input v-model="manufacturer" type="text" class="company-name" />
                         </div>
                         <br />
                         <div class="manufacture-day">
                           <span>제조일자 :</span>
                           <span>
-                            <v-app>
+                            <!-- <input v-model="manufacture_date" type="text" /> -->
+                            <!-- <v-app>
                               <v-row justify="center">
                                 <v-date-picker
                                   v-model="picker"
@@ -237,19 +235,14 @@
                                   next-icon="mdi-skip-next"
                                 ></v-date-picker>
                               </v-row>
-                            </v-app>
+                            </v-app> -->
+                            <b-form-datepicker id="example-datepicker" v-model="manufacture_date" class="mb-2"></b-form-datepicker>
                           </span>
                         </div>
                         <br />
                         <span>원산지 :</span>
                         <span>
-                          <b-form-select
-                            style="width=200px;"
-                            v-model="selected"
-                            :options="options"
-                            size="sm"
-                            class="mt-3"
-                          ></b-form-select>
+                          <b-form-select v-model="manufacture_country_id" :options="conturys" size="sm" class="mt-3"></b-form-select>
                         </span>
                       </div>
                     </td>
@@ -265,17 +258,17 @@
                         type="text"
                         name="product_name"
                         class="form-control"
-                        value
+                        v-model="name"
                         maxlength="200"
                       />
-                      <span class="font-color-blue">
-                        <p style="margin-top: 10px;">
+                         <span class="font-color-blue style-filter-span">
                           <i class="xi-caret-up"></i> 상품명에는 쌍따옴표(") 또는 홑따옴표(')를 포함할 수 없습니다.
-                        </p>
-                        <p>
+                        </span>
+                        <br>
+                        <span class="font-color-blue style-filter-span">
                           <i class="xi-caret-up"></i> 상품명에는 4byte 이모지를 포함할 수 없습니다.
-                        </p>
-                      </span>
+                        </span>
+                      
                     </td>
                   </tr>
                   <!-- 한줄 상품 설명 테이블 -->
@@ -285,7 +278,7 @@
                       <span class="font-color-red">*</span>
                     </td>
                     <td class="oneline-explain">
-                      <input type="text" class="one-line" />
+                      <input v-model="description_short" type="text" class="form-control" />
                     </td>
                   </tr>
                   <!-- 이미지 등록 테이블 -->
@@ -294,12 +287,12 @@
                       이미지 등록
                       <span class="font-color-red">*</span>
                     </td>
-                    <td class="image-upload" style="border: 1px solid #ddd;">
+                    <td class="image-upload" >
                       <div id="preview">
                         <img v-if="url" :src="url" />
                       </div>
                       <input type="file" @change="onFileChange" accept="image/*" multiple />
-                      <div class="font-color-blue">
+                      <div class="font-color-blue style-filter-span">
                         <i class="xi-caret-up"></i> 640 * 720 사이즈 이상 등록 가능하며 확장자는 jpg 만 등록 가능합니다.
                       </div>
 
@@ -316,21 +309,21 @@
 
                   <!-- 색상필터(썸네일 이미지) -->
                   <tr>
-                    <td class="color-filter default-info-left">
+                    <td class="default-info-left">
                       색상필터(썸네일 이미지)
                       <span class="font-color-red">*</span>
                     </td>
-                    <td style="background-color: #f9f9f9;">
+                    <td>
                       <div class="col-md-12">
                         <div class="radio-list">
-                          <label class="radio-inline">
+                          <label>
                             <div class="radio">
                               <span class="checked">
-                                <input type="radio" name="colorCode" class="ui-control" />
+                                <input type="radio" name="colorCode" class="ui-control" checked />
                               </span>
                             </div>사용안함
                           </label>
-                          <label class="radio-inline">
+                          <label >
                             <div class="radio">
                               <span>
                                 <input type="radio" name="colorCode" class="ui-control" />
@@ -548,7 +541,7 @@
                                 </v-card-text>
                                 <v-divider></v-divider>
                                 <v-card-actions>
-                                  <v-btn class="ma-2" tile outlined color="success">적용</v-btn>
+                                  <v-btn class="apply-button">적용</v-btn>
                                   <v-btn color="blue darken-1" text @click="colordialog = false">취소</v-btn>
                                 </v-card-actions>
                               </v-card>
@@ -559,6 +552,8 @@
                         <span class="font-color-blue">
                           <i class="xi-caret-up"></i> 베스트 탭, 카테고리 페이지 및 검색페이지의 필터에 적용되며, 선택하지 않으실 경우 색상필터를 사용한 검색결과에 노출되지 않습니다.
                           <br />
+                        </span>
+                        <span class="font-color-blue">
                           <i class="xi-caret-up"></i> 썸네일 이미지의 1개 색상만 선택 가능하며, 뷰티 및 다이어트 카테고리의 상품의 경우 선택하실 수 없습니다.
                         </span>
                       </div>
@@ -567,13 +562,13 @@
 
                   <!-- 스타일필터 -->
 
-                  <tr class="tr-top">
+                  <tr>
                     <td class="style-filter default-info-left">
                       스타일필터
                       <span class="font-color-red">*</span>
                     </td>
                     <div class="style-filter-label">
-                      <label class="radio-inline">
+                      <label>
                         <div class="radio">
                           <span class="checked">
                             <input
@@ -581,11 +576,12 @@
                               name="styleCode"
                               class="ui-control"
                               disabled="disabled"
+                              checked
                             />
                           </span>
                         </div>선택안함
                       </label>
-                      <label class="radio-inline">
+                      <label>
                         <div class="radio">
                           <span class="checked">
                             <input
@@ -597,7 +593,7 @@
                           </span>
                         </div>심플베이직
                       </label>
-                      <label class="radio-inline">
+                      <label >
                         <div class="radio">
                           <span class="checked">
                             <input
@@ -609,7 +605,7 @@
                           </span>
                         </div>러블리
                       </label>
-                      <label class="radio-inline">
+                      <label >
                         <div class="radio">
                           <span class="checked">
                             <input
@@ -621,7 +617,7 @@
                           </span>
                         </div>페미닌
                       </label>
-                      <label class="radio-inline">
+                      <label >
                         <div class="radio">
                           <span class="checked">
                             <input
@@ -633,7 +629,7 @@
                           </span>
                         </div>캐주얼
                       </label>
-                      <label class="radio-inline">
+                      <label >
                         <div class="radio">
                           <span class="checked">
                             <input
@@ -646,9 +642,11 @@
                         </div>섹시글램
                       </label>
                     </div>
-                    <span class="font-color-blue">
+                    <span class="font-color-blue style-filter-span" >
                       <i class="xi-caret-up"></i> 베스트 탭, 카테고리 페이지 및 검색페이지의 필터에 적용되며, 선택하지 않으실 경우 색상필터를 사용한 검색결과에 노출되지 않습니다.
+                    </span>
                       <br />
+                        <span class="font-color-blue style-filter-span" >
                       <i class="xi-caret-up"></i> 1개 스타일만 선택 가능하며, 브랜드 및 뷰티&다이어트 카테고리 상품의 경우 선택하실 수 없습니다.
                     </span>
                   </tr>
@@ -661,7 +659,6 @@
                     <td>
                       <div class="col-md-12">
                         <button type="button" class="age-filter">--연령필터 데이터받을곳--</button>
-                        <br />
                         <br />
                         <span class="font-color-blue">
                           <i class="xi-caret-up"></i> 베스트 탭, 카테고리 페이지 및 검색페이지의 필터에 적용되며, 셀러 정보 셀러태그정보의 연령대가 자동으로 적용됩니다.
@@ -681,7 +678,7 @@
                     </td>
                     <ckeditor
                       :editor="editor"
-                      v-model="editorData"
+                      v-model="description_detail"
                       :config="editorConfig"
                       class="ckeditor"
                     ></ckeditor>
@@ -700,28 +697,26 @@
                     <div class="portlet">
                       <div class="portlet-title">
                         <div class="caption">
-                          <i class="xi-pen-o" style="color: black;"></i>
+                          <i class="xi-pen-o"></i>
                           <span>옵션정보</span>
                         </div>
                       </div>
                       <div
                         class="row"
-                        style="border: 1px solid rgb(136, 136, 136); background-color: rgb(249, 249, 249);"
                       >
                         <div class="col-md-12">
                           <table
                             class="table-in-portlet"
-                            style="border: 1px solid rgb(221, 221, 221);"
                           >
                             <tbody>
-                              <tr style="border: 1px solid rgb(221, 221, 221);">
+                              <tr>
                                 <td width="15%" class="seller-choice default-info-left">
                                   옵션 설정
                                   <span class="font-color-red">*</span>
                                 </td>
-                                <td style="width: 300px; display: flex;">
+                                <td >
                                   <div class="radio-list">
-                                    <label class="radio-inline">
+                                    <label >
                                       <div class="radio">
                                         <span class="checked">
                                           <input type="radio" name="sell" value="Y" />
@@ -731,7 +726,7 @@
                                   </div>
                                 </td>
                               </tr>
-                              <tr style="border: 1px solid rgb(221, 221, 221);">
+                              <tr>
                                 <td width="15%" class="seller-choice default-info-left">옵션 정보</td>
                                 <td colspan="3">
                                   <div class="basic-option-wrap">
@@ -741,26 +736,15 @@
                                           <th>옵션항목</th>
                                           <th>상품옵션명</th>
                                           <th>옵션값 추가/삭제</th>
-                                          <th></th>
+                                          
                                         </tr>
                                       </thead>
                                       <tbody>
                                         <tr class="option-group-1">
                                           <td width="15%" rowspan="1">색상</td>
                                           <td>
-                                            <select
-                                              name="basicOptionSelect"
-                                              class="form-control"
-                                              placeholder="컬러 옵션을 선택해 주세요."
-                                              title
-                                            >
-                                              <option value="0">색상 옵션을 선택해 주세요.</option>
-                                              <option value="2">Black</option>
-                                              <option value="3">White</option>
-                                              <option value="4">Gray</option>
-                                              <option value="5">Ivory</option>
-                                              <option value="6">Navy</option>
-                                            </select>
+                                                <b-form-select v-model="color_id" :options="optionColor" size="sm" class="mt-1"></b-form-select>
+
                                           </td>
 
                                           <td width="15%">
@@ -777,20 +761,8 @@
                                         <tr class="option-group-2">
                                           <td width="15%" rowspan="1">사이즈</td>
                                           <td>
-                                            <select
-                                              name="basicOptionSelect"
-                                              class="form-control"
-                                              placeholder="사이즈 옵션을 선택해 주세요."
-                                              tabindex="-1"
-                                              title
-                                            >
-                                              <option value="0">사이즈 옵션을 선택해 주세요.</option>
-                                              <option value="2">라지</option>
-                                              <option value="3">미디엄</option>
-                                              <option value="4">스몰</option>
-                                              <option value="5">투엑스</option>
-                                              <option value="6">쓰리엑스</option>
-                                            </select>
+                                            <b-form-select v-model="size_id" :options="optionSize" size="sm" class="mt-1"></b-form-select>
+
                                           </td>
 
                                           <td width="15%">
@@ -809,21 +781,25 @@
                                         <tr class="heading">
                                           <td class="vertical-align-middle">재고관리여부</td>
                                           <td colspan="6" class="vertical-align-middle">
-                                            <div>
-                                              <label class="radio-inline">
+                                            <div class="stock-div">
+                                              <label>
                                                 <div class="radio">
                                                   <span class="checked">
                                                     <input
+                                                    v-model="stock"
+                                                    value="1"
                                                       type="radio"
-                                                      name="basicOptionInventoryUseyn"
                                                     />
                                                   </span>
                                                 </div>재고 수량 관리 안함
                                               </label>
-                                              <label class="radio-inline stock-amount">
+                                              <label class="stock-amount">
                                                 <div class="radio">
                                                   <span>
-                                                    <input type="radio" />
+                                                    <input 
+                                                      v-model="stock"
+                                                    value="0" 
+                                                    type="radio" />
                                                   </span>
                                                 </div>재고 수량 관리
                                               </label>
@@ -833,25 +809,17 @@
                                       </tfoot>
                                     </table>
 
-                                    <v-btn
-                                      color="green"
-                                      dark
-                                      v-on="on"
-                                      style="margin-bottom:30px;"
-                                    >적용</v-btn>
+                                    <v-btn class="apply-button"  v-on="on">적용</v-btn>
 
                                     <table class="table table-bordered">
-                                      <thead>
-                                        <tr class="heading">
-                                          <th class="bd-top">상품옵션정보</th>
-                                          <th class="bd-top">일반재고</th>
-                                        </tr>
-                                      </thead>
-                                      <thead>
-                                        <tr class="heading">
-                                          <th class="bd-top">색상 / 사이즈</th>
-                                        </tr>
-                                      </thead>
+                                   <tr>
+                                      <td class="product-option-info"> 상품 옵션정보</td>
+                                         <td class="product-option-info" rowspan="2"> 일반재고 </td>
+                                     </tr>
+
+                                     <tr>
+                                      <td class="product-option-info"> 색상 / 사이즈 </td>
+                                     </tr>
                                       <tbody>
                                         <tr>
                                           <td colspan="11">
@@ -868,7 +836,7 @@
                                     </div>
                                   </div>
                                 </td>
-                                <span class="font-color-blue" style="margin-top: 10px;"></span>
+                                <span class="font-color-blue"></span>
                               </tr>
                             </tbody>
                           </table>
@@ -889,7 +857,7 @@
                     <div class="portlet">
                       <div class="portlet-title">
                         <div class="caption">
-                          <i class="xi-pen-o" style="color: black;"></i>
+                          <i class="xi-pen-o"></i>
                           <span>판매정보</span>
                         </div>
                       </div>
@@ -897,16 +865,16 @@
                         <div class="col-md-12">
                           <table class="table-in-portlet sell-info">
                             <tbody>
-                              <tr class="tr-top">
+                              <tr>
                                 <td
                                   width="15%"
                                   height="50px"
-                                  class="seller-choice default-info-left"
+                                  class="seller-choice default-info-left "
                                 >도매원가</td>
                                 <td class="td-wholesale">
                                   <div class="input-group">
                                     <input
-                                      class="wholesale"
+                                      class="wholesale seller-info-input"
                                       type="text"
                                       maxlength="8"
                                       placeholder="0"
@@ -915,7 +883,7 @@
                                   <span class="input-group-addon">원</span>
                                 </td>
                               </tr>
-                              <tr class="tr-top">
+                              <tr>
                                 <td
                                   width="15%"
                                   height="50px"
@@ -927,18 +895,20 @@
                                 <td class="td-wholesale">
                                   <div class="input-group">
                                     <input
-                                      class="wholesale"
+                                      v-model="price"
+                                      class="wholesale seller-info-input"
                                       type="text"
                                       maxlength="8"
                                       placeholder="0"
                                     />
                                   </div>
                                   <span class="input-group-addon">원</span>
-                                </td>
-                                <span class="font-color-blue">
+                                    <span class="font-color-blue">
                                   <i class="xi-caret-up"></i>
                                   판매가는 원화기준 10원 이상이며 가격 입력 시 10원 단위로 입력해 주세요.
                                 </span>
+                                </td>
+                              
                               </tr>
                               <tr>
                                 <td
@@ -950,17 +920,18 @@
                                   <span class="font-color-red">*</span>
                                 </td>
                                 <td colspan="3">
-                                  <div class="col-md-6 td-line">
+                                  <div class="col-md-6">
                                     <table>
                                       <tbody>
-                                        <tr class="td-line">
-                                          <td class="td-line">할인율</td>
-                                          <td class="td-line" width="200px">할인가</td>
+                                        <tr >
+                                          <td >할인율</td>
+                                          <td >할인가</td>
                                         </tr>
-                                        <tr class="td-line">
-                                          <td class="td-line td-background">
+                                        <tr >
+                                          <td class=" td-background">
                                             <div class="discount-rate">
                                               <input
+                                              v-model="discount_rate"
                                                 placeholder="0"
                                                 class="discount-input"
                                                 type="text"
@@ -968,22 +939,41 @@
                                               <span class="discount-persent">%</span>
                                             </div>
                                           </td>
-                                          <td class="td-line td-background">
+                                          <td class=" td-background">
                                             <div>
                                               <input
+                                              v-model="discount_price"
                                                 class="discount-input"
                                                 type="text"
                                                 placeholder="0"
-                                              />원
+                                                />원
                                               <button class="discount-button" type="button">할인판매가적용</button>
                                             </div>
                                           </td>
                                         </tr>
-                                        <tr class="td-line">
-                                          <td class="td-line">할인판매가</td>
+
+                                     
+                                        <tr >
+                                          <td class=" td-background">
+                                           할인판매가
+                                          </td>
+                                          <td class=" td-background">
+                                            <div>
+                                              <input
+                                              v-model="discount_price"
+                                                class="discount-input"
+                                                type="text"
+                                                placeholder="0"
+                                                />원
+                                              
+                                            </div>
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td>할인기간</td>
                                           <td class="product_info">
                                             <div class="radio-list">
-                                              <label class="radio-inline">
+                                              <label>
                                                 <div class="radio">
                                                   <button>
                                                     <input
@@ -991,37 +981,37 @@
                                                       name="informationNo2"
                                                       value="Y"
                                                       checked="checked"
-                                                      v-on:click="thatisHidden = true"
+                                                      v-on:click="thatisHidden = false"
                                                     />
                                                     무기한
                                                   </button>
                                                 </div>
                                               </label>
 
-                                              <label class="radio-inline">
+                                              <label>
                                                 <button>
                                                   <input
                                                     type="radio"
                                                     name="informationNo2"
-                                                    v-on:click="thatisHidden = !thatisHidden"
+                                                    v-on:click="thatisHidden = true"
                                                   />
                                                   기간설정
                                                 </button>
                                               </label>
                                             </div>
-                                            <div class="input-directly" v-if="!thatisHidden">
+                                            <div class="input-directly" v-if="thatisHidden">
                                               <span>
-                                                <div>
-                                                  <v-row justify="space-around">
-                                                    <v-app>
-                                                      <v-date-picker
-                                                        v-model="date1"
-                                                        :show-current="true"
-                                                      ></v-date-picker>
-                                                    </v-app>
-                                                  </v-row>
+                                                 <div>
+                                                  <label for="datepicker-invalid"> 시작일 </label>
+                                                  <b-form-datepicker v-model="discount_start" id="datepicker-invalid" :state="false" class="mb-2"></b-form-datepicker>
+                                                  <label for="datepicker-valid"> 종료일 </label>
+                                                  <b-form-datepicker v-model="discount_end" id="datepicker-valid" :state="true"></b-form-datepicker>
                                                 </div>
                                               </span>
+                                              <br>
+                                              <span class="font-color-red">
+                                                   * 할인기간을 설정시 기간만료되면 자동으로 정상가로 변경 됩니다. <br>
+                                                </span>
                                             </div>
                                           </td>
                                         </tr>
@@ -1041,7 +1031,6 @@
                               <tr class="tr-wholesale default-info-left">
                                 <td
                                   width="15%"
-                                  height="50px"
                                   class="seller-choice default-info-left"
                                 >
                                   최소판매수량
@@ -1049,14 +1038,14 @@
                                 </td>
                                 <td>
                                   <div class="radio-list">
-                                    <label class="radio-inline">
+                                    <label>
                                       <div class="radio">
                                         <span class="checked">
-                                          <input type="radio" checked />
+                                          <input v-model="min_sales_unit" value ="1" type="radio"/>
                                         </span>
                                       </div>1개 이상
                                     </label>
-                                    <label class="radio-inline">
+                                    <label>
                                       <div class="radio">
                                         <span>
                                           <input class type="radio" disabled />
@@ -1079,14 +1068,14 @@
                                 </td>
                                 <td>
                                   <div class="radio-list">
-                                    <label class="radio-inline">
+                                    <label>
                                       <div class="radio">
                                         <span class="checked">
-                                          <input type="radio" checked />
+                                          <input v-model="max_sales_unit" value="20" type="radio"  />
                                         </span>
                                       </div>20개
                                     </label>
-                                    <label class="radio-inline">
+                                    <label>
                                       <div class="radio">
                                         <span>
                                           <input class type="radio" disabled />
@@ -1110,7 +1099,7 @@
                                 <td>
                                   <b-form-tags
                                     input-id="tags-separators"
-                                    v-model="value"
+                                    v-model="tag"
                                     separator=" ,;"
                                     placeholder="입력해 주세요"
                                     class="mb-2"
@@ -1129,11 +1118,11 @@
           </div>
           <!-- 등록 취소 버튼 -->
           <v-col class="text-center">
-            <div class="my-2" @click="postProduct">
-              <v-btn>등록</v-btn>
+            <div class="my-2">
+              <v-btn class="enroll-button">등록</v-btn>
             </div>
             <div class="my-2">
-              <v-btn>취소</v-btn>
+              <v-btn class="cancle-button">취소</v-btn>
             </div>
           </v-col>
         </div>
@@ -1151,70 +1140,107 @@ export default {
   el: `#app`,
   components: {},
   data() {
-    return {
+    return {      
       text: '',
       colordialog: false,
       dialog: false,
       message: 'Default Message',
       isHidden: false,
       thatisHidden: false,
+      thisisHidden : false,
       key: '',
+      // ----------상품등록 post 데이터----------------
+      seller_id: "",
       selected: null,
-      seller_id: '',
-      on_sale: '',
-      on_list: '',
-      first_category_id: '',
-      second_category_id: '',
-      manufacturer: '',
-      manufacture_date: '',
-      manufacture_country_id: '',
-      name: '',
-      description_short: '',
+      on_sale: "1",
+      on_list: "1",
+      first_category_id: "",
+      second_category_id: "",
+      manufacturer: "",
+      manufacture_date: "",
+      manufacture_country_id: "",
+      name: "",
+      // color_filter_id: "",
+      // style_filter_id: "",
+      description_short: "",
+      description_detail:"",
       option: [
         {
-          color_id: '',
-          size_id: '',
-          stock: '',
+          color_id: "",
+          size_id: "",
+          stock: "",
         },
       ],
-      price: ``,
-      discount_rate: 12,
-      discount_price: 17600,
-      discount_start: '2020-06-02 14:37',
-      discount_end: '2020-06-26 14:37',
+      price: "",
+      discount_rate: null,
+      discount_price: null,
+      discount_start: null,
+      discount_end: null,
+      min_sales_unit : "1",
+      max_sales_unit : "20",
+      tag : [],
       options: [
         { value: null, text: '1차 카테고리를 선택해주세요' },
-        { value: 'a', text: '아우터' },
-        { value: 'b', text: '상의' },
-        { value: { C: '3PO' }, text: '스커트' },
-        { value: 'd', text: '바지' },
-        { value: 'e', text: '원피스' },
-        { value: 'f', text: '신발' },
-        { value: 'g', text: '가방' },
-        { value: 'h', text: '잡화' },
-        { value: 'i', text: '주얼리' },
-        { value: 'j', text: '라이프웨어' },
-        { value: 'k', text: '빅사이즈' },
-        // { value: 'd', text: 'This one is disabled', disabled: true }
+        { value: '아우터', text: '아우터' },
+        { value: '상의', text: '상의' },
+        { value: '스커트', text: '스커트' },
+        { value: '바지', text: '바지' },
+        { value: '원피스', text: '원피스' },
+        { value: '신발', text: '신발' },
+        { value: '가방', text: '가방' },
+        { value: '잡화', text: '잡화' },
+        { value: '주얼리', text: '주얼리' },
+        { value: '라이프웨어', text: '라이프웨어' },
+        { value: '빅사이즈', text: '빅사이즈' },
       ],
-      contury: [{ value: 'a', text: '한국' }],
+        secondOptions: [
+        { value: null, text: '2차 카테고리를 선택해주세요' },
+        { value: '자켓', text: '자켓' },
+        { value: '가디건', text: '가디건' },
+        { value: '코트', text: '코트' },
+        { value: '점퍼', text: '점퍼' },
+        { value: '패딩', text: '패딩' },
+        { value: '무스탕/퍼', text: '무스탕/퍼' },
+        { value: '기타', text: '기타' },
+      
+      ],
+      conturys: [
+          { value: null, text: '국가를 선택해 주세요' },
+          { value: '대한민국', text: '대한민국' },
+          { value: '베트남', text: '베트남' },
+          { value: '중국', text: '중국' },
+          { value: '기타', text: '기타' },
+        ]
+      ,
+        optionColor: [
+          { value: null, text: '색상을 선택해 주세요' },
+          { value: '검정', text: '검정' },
+          { value: '초록', text: '초록' },
+          { value: '노랑', text: '노랑' },
+          { value: '기타', text: '기타' },
+        ],
+          optionSize: [
+          { value: null, text: '사이즈을 선택해 주세요' },
+          { value: 's', text: 's' },
+          { value: 'm', text: 'm' },
+          { value: 'l', text: 'l' },
+          { value: '기타', text: '기타' },
+        ],
       url: null,
       editor: ClassicEditor,
-      editorData: '<p> 브랜디디디 </p>',
       editorConfig: {
-        // The configuration of the editor.
       },
       date: null,
       date1: null,
       dateFormatted: null,
-      menu1: false,
-      value: [, ,],
-    };
+      value: [] ,
+     };
   },
   computed: {
     computedDateFormatted() {
       return this.formatDate(this.date);
     },
+      
   },
   watch: {
     date(val) {
@@ -1244,37 +1270,40 @@ export default {
     postProduct: function() {
       if (confirm('상품을 등록 하시겠습니까?') == true) {
         axios
-          .post(`http://localhost:8080/productRegist.json`, {
-            seller_id: 1,
-            on_sale: 1,
-            on_list: 1,
-            first_category_id: 1,
-            second_category_id: 2,
-            manufacturer: 'string',
-            manufacture_date: 'date',
-            manufacture_country_id: 1,
-            name: 'string',
-            description_short: 'string',
-            images: [
-              {
-                url: 'url',
-              },
-            ],
-            color_filter_id: 'none',
-            style_filter_id: 'none',
-            description_detail: '상세 상품 정보',
+          .post(`http://localhost:8080/product`, {
+            seller_id: this.seller_id,
+            on_sale: this.on_sale,
+            on_list: this.on_list,
+            first_category_id: this.first_category_id,
+            second_category_id: this.second_category_id,
+            manufacturer: this.manufacturer,
+            manufacture_date: this.manufacture_date,
+            manufacture_country_id: this.manufacture_country_id,
+            name: this.name,
+            description_short: this.description_short,
+            // color_filter_id: this.color_filter_id,
+            // style_filter_id: this.style_filter_id,
+            // images: [
+            //   {
+            //     url: 'url',
+            //   },
+            // ],
+            description_detail: this.description_detail,
             option: [
               {
-                color_id: 1,
-                size_id: 3,
-                stock: 30,
+                color_id: this.color_id,
+                size_id: this.size_id,
+                stock: this.stock,
               },
             ],
-            price: 20000,
-            discount_rate: 12,
-            discount_price: 17600,
-            discount_start: '2020-06-02 14:37',
-            discount_end: '2020-06-26 14:37',
+            price: this.price,
+            discount_rate: this.discount_rate,
+            discount_price: this.discount_price,
+            discount_start: this.discount_start,
+            discount_end: this.discount_end,
+            min_sales_unit  :this.min_sales_unit,
+            max_sales_unit : this.max_sales_unit,
+            tag : this.tag,
           })
           .then(res => {
             if (res.status === 200) {
@@ -1284,12 +1313,26 @@ export default {
           .catch(error => console.log(error.response.data.message));
       }
     },
+  
   },
 };
 </script>
 <style lang="scss" scoped>
 .ProductRegist {
-  display: flex;
+  
+   tr th{
+    // border : 1px solid #ddd;
+    text-align: center;
+   }
+   td {
+     padding : 10px;
+     border:  0.3px solid #ddd;
+     background-color: white;
+
+    }
+    .td-border {
+      // border:  0.3px solid #ddd;
+    }
 
   .page_content {
     width: 100%;
@@ -1313,8 +1356,6 @@ export default {
       padding: 0px;
       background-color: #eee;
       margin-bottom: 25px;
-      margin-left: -20px;
-      margin-right: -20px;
       padding-left: 10px;
       padding-right: 20px;
     }
@@ -1327,19 +1368,13 @@ export default {
     }
 
     .portlet {
-      clear: both;
-      margin-top: 0px;
-      margin-bottom: 25px;
-      padding: 0px;
-      -webkit-box-shadow1: 0 1px 4px rgba(0, 0, 0, 0.07);
-      border: 1px solid #888;
-      border-radius: 4px;
+     
 
       .portlet-title {
         background-color: #eee;
         border-radius: 4px 4px 0 0;
         padding: 10px 10px 2px 10px;
-        height: 38px;
+        height: 50px;
       }
 
       .caption {
@@ -1353,34 +1388,52 @@ export default {
         padding: 0;
         margin-top: 1px;
       }
+    
     }
 
-    .sell-info {
-      border: 1px solid rgb(136, 136, 136);
-      background-color: rgb(249, 249, 249);
-    }
-    .tr-top {
-      border: 1px solid #ddd;
-    }
+  .modal-color{
+    background-color: white;
+    color : red;
+  }
+
+  .modal-form {
+    display: flex;
+    justify-content:center; 
+    background-color: white;
+
+  }
+    
+ 
     label {
       display: flex;
       margin: 10px;
     }
     .seller-search {
-      width: 300px;
       display: flex;
-      margin-top: 10px;
-      margin-left: 10px;
+    
+       
+    .seller-search-input{
+    background-color:white; 
+    width:150px; 
+    margin:auto;
     }
+
+      .seller-search2 {
+       cursor: not-allowed;
+       background-color: #eeeeee;
+       width:250px; 
+       border:none;
+
+     }
+    }
+
+   
     .row {
       margin-right: -15px;
       margin-left: -15px;
 
-      .col-md-12 {
-        width: 100%;
-      }
+  
       .table-in-portlet {
-        border: 1px solid #888;
         width: 100%;
       }
       .align-middle {
@@ -1397,10 +1450,7 @@ export default {
       .radio-list {
         display: flex;
         align-items: center;
-        background-color: #f9f9f9;
-        .radio-inline {
-          margin-left: 15px;
-        }
+      
       }
 
       .font-color-blue {
@@ -1428,10 +1478,7 @@ export default {
         justify-content: flex-start;
         align-items: center;
       }
-      .product_info {
-        width: 300px;
-        background-color: #f9f9f9;
-      }
+      
       .company-name {
         margin-top: 10px;
         background-color: white;
@@ -1449,11 +1496,10 @@ export default {
         width: 300px;
       }
       .form-control {
-        width: 100%;
         border: 1px solid #888;
       }
       .color-filter {
-        border: 1px solid #ddd;
+        // border: 1px solid #ddd;
         width: 200px;
       }
       .one-line {
@@ -1487,7 +1533,7 @@ export default {
     }
     .ckeditor {
       display: block;
-      border: 1px solid #ddd;
+      // border: 1px solid #ddd;
       border-radius: 4px;
       padding: 0 3px;
       background: #eee;
@@ -1505,12 +1551,9 @@ export default {
     .style-filter-label {
       display: flex;
       justify-content: flex-start;
-      margin-left: 10px;
     }
 
     .default-info-left {
-      border: 1px solid #ddd;
-
       background-color: #eee;
       text-align: center;
     }
@@ -1524,12 +1567,10 @@ export default {
     }
 
     .input-group {
-      padding-bottom: 10px;
       width: 240px !important;
       background-color: white;
-      border-radius: 10px;
-      margin-top: 10px;
-      margin-left: 10px;
+      border-radius: 10px;     
+      margin-left : 10px 
     }
 
     .wholesale {
@@ -1541,15 +1582,14 @@ export default {
     }
 
     .input-group-addon {
+      margin-left: 10px;
       border-color: #e5e5e5;
-      background: #e5e5e5;
       min-width: 39px;
       margin-top: 10px;
     }
 
-    .td-line {
-      border: 1px solid black;
-      margin-left: 10px;
+    .seller-info-input {
+      border: 1px solid #eee;
     }
 
     .td-background {
@@ -1565,7 +1605,7 @@ export default {
 
     .discount-persent {
       background-color: #e5e5e5;
-    }
+      }
 
     .discount-button {
       color: #fff;
@@ -1578,16 +1618,15 @@ export default {
     }
 
     .discount-input {
-      width: 150px;
+      width: 100px;
       margin-left: 10px;
+       border: 1px solid #ddd;
     }
 
     .discount-rate {
       display: flex;
-      margin-left: 10px;
-      margin-top: 10px;
-      width: 175px;
-      border: 1px solid gray;
+    
+     
     }
 
     .minimum-amount {
@@ -1596,7 +1635,9 @@ export default {
       width: 100px;
       height: 34px;
     }
-
+    .stock-div{
+      display: flex;
+    }
     .stock-amount {
       margin-left: 20px;
     }
@@ -1605,7 +1646,38 @@ export default {
       display: flex;
       justify-content: center;
     }
+    
 
+     .inspire {
+       height : 50px;
+     }
+    .modal-input{
+      border: 1px solid red;
+    }
+
+    .enroll-button {
+      background-color: #5cb85c !important;
+      color : white
+    }
+    .cancle-button {
+      margin-left: 5px;
+      background-color: #d9534f !important;
+      color: white;
+    }
+
+    .apply-button{
+      background-color: #5bc0de !important;
+      color : white;
+      margin-bottom: 10px;
+    }
+
+    .product-option-info{
+      text-align: center;
+    }
+
+    .style-filter-span {
+      margin-left: 20px;
+    }
     // .seller_tr {
     //   height: 20px !important;
     // }
@@ -1613,11 +1685,7 @@ export default {
     //   height: 20px !important;
     //   margin: 0 10px;
     // }
-    // .search_seller {
-    //   cursor: not-allowed;
-    //   background-color: #eeeeee;
-    //   margin-left: 20px;
-    // }
+    
   }
 }
 </style>
